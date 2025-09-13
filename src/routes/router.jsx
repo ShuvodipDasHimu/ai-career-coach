@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter } from "react-router-dom";
 import RootLayout from "../layout/RootLayout";
 import HomePage from "../pages/HomePage"
 import Register from "../components/auth/Register";
@@ -8,6 +8,8 @@ import ResumeAnalyzer from "../pages/ResumeAnalyzer"
 import RoadmapGenerator from "../pages/RoadmapGenerator"
 import CareerQA from "../pages/CareerQA"
 import MyHistory from "../pages/MyHistory"
+import Settings from "../pages/Settings"
+import JobRecommendations from "../pages/JobRecommendations"
 import ErrorPage from "../pages/ErrorPage"
 
 const router = createBrowserRouter([
@@ -47,6 +49,14 @@ const router = createBrowserRouter([
       {
         path:"/my-history",
         Component: MyHistory
+      },
+      {
+        path:"/settings",
+        Component: Settings
+      },
+      {
+        path:"/job-recommendations",
+        Component: JobRecommendations
       }
     ],
   },
