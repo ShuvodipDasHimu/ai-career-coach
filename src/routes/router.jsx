@@ -6,6 +6,8 @@ import Login from "../components/auth/Login";
 import Dashboard from "../pages/Dashboard"
 import ResumeAnalyzer from "../pages/ResumeAnalyzer"
 import RoadmapGenerator from "../pages/RoadmapGenerator"
+import CareerQA from "../pages/CareerQA"
+import MyHistory from "../pages/MyHistory"
 import ErrorPage from "../pages/ErrorPage"
 
 const router = createBrowserRouter([
@@ -37,6 +39,14 @@ const router = createBrowserRouter([
       {
         path:"/roadmap-generator",
         Component: RoadmapGenerator
+      },
+      {
+        path:"/career-qa",
+        Component: CareerQA
+      },
+      {
+        path:"/my-history",
+        Component: MyHistory
       }
     ],
   },
