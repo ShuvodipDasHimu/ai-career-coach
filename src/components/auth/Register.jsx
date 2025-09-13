@@ -69,10 +69,10 @@ const Register = () => {
             <FaLinkedinIn className="mr-2" />
             Sign Up with LinkedIn
           </button>
-          <button className="w-full flex justify-center py-2 px-4 border border-gray-600 rounded-full shadow-sm text-sm font-medium text-white bg-gray-700 hover:bg-gray-600 transition-colors duration-300">
+          <Link to="/dashboard" className="w-full flex justify-center py-2 px-4 border border-gray-600 rounded-full shadow-sm text-sm font-medium text-white bg-gray-700 hover:bg-gray-600 transition-colors duration-300">
             <FaUser className="mr-2" />
             Continue as Guest
-          </button>
+          </Link>
         </div>
 
         {/* Login link */}
