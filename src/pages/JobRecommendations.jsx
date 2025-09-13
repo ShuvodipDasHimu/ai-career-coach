@@ -208,7 +208,7 @@ const JobRecommendations = () => {
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
-              <FaUserTie className="text-purple-400" size={32} />
+              <FaUserTie className="text-indigo-400" size={32} />
               <h1 className="text-3xl font-bold text-white">Job Recommendations</h1>
             </div>
             <div className="flex space-x-2">
@@ -227,7 +227,7 @@ const JobRecommendations = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
               <div className="flex items-center space-x-2 mb-2">
-                <MdOutlineWorkOutline className="text-purple-400" size={20} />
+                <MdOutlineWorkOutline className="text-indigo-400" size={20} />
                 <h3 className="text-lg font-semibold text-white">Available Jobs</h3>
               </div>
               <p className="text-3xl font-bold text-white">{jobsData.length}</p>
@@ -273,7 +273,7 @@ const JobRecommendations = () => {
                   placeholder="Search jobs, companies, or skills..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-gray-700 text-white pl-10 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 border border-gray-600"
+                  className="w-full bg-gray-700 text-white pl-10 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600"
                 />
               </div>
 
@@ -284,7 +284,7 @@ const JobRecommendations = () => {
                     key={filterType}
                     value={selectedFilters[filterType]}
                     onChange={(e) => handleFilterChange(filterType, e.target.value)}
-                    className="bg-gray-700 text-white px-3 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-400"
+                    className="bg-gray-700 text-white px-3 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                   >
                     {options.map(option => (
                       <option key={option.value} value={option.value}>
@@ -358,7 +358,7 @@ const JobRecommendations = () => {
                         
                         <div className="flex flex-wrap gap-2 mb-4">
                           {job.requirements.map((skill, index) => (
-                            <span key={index} className="bg-purple-600/20 text-purple-400 px-3 py-1 rounded-full text-sm">
+                            <span key={index} className="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded-full text-sm">
                               {skill}
                             </span>
                           ))}
@@ -384,7 +384,7 @@ const JobRecommendations = () => {
                             
                             <button
                               onClick={() => handleApplyJob(job)}
-                              className="flex items-center space-x-1 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 transition-colors"
+                              className="flex items-center space-x-1 bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors"
                             >
                               <FaExternalLinkAlt size={14} />
                               <span>Apply</span>

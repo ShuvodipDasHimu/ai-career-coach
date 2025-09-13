@@ -140,7 +140,7 @@ const RoadmapGenerator = () => {
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
-              <MdOutlineSchool className="text-purple-400" size={32} />
+              <MdOutlineSchool className="text-indigo-400" size={32} />
               <h1 className="text-3xl font-bold text-white">Career Roadmap Generator</h1>
             </div>
             <button 
@@ -157,7 +157,7 @@ const RoadmapGenerator = () => {
               {/* Career Path Selection */}
               <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
                 <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
-                  <MdOutlineStars className="text-purple-400" size={24} />
+                  <MdOutlineStars className="text-indigo-400" size={24} />
                   <span>Select Your Target Career</span>
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -167,7 +167,7 @@ const RoadmapGenerator = () => {
                       onClick={() => setSelectedCareer(career.id)}
                       className={`p-4 rounded-lg border cursor-pointer transition-all duration-200 ${
                         selectedCareer === career.id
-                          ? 'border-purple-400 bg-purple-400/10'
+                          ? 'border-indigo-400 bg-indigo-500/10'
                           : 'border-gray-600 hover:border-gray-500'
                       }`}
                     >
@@ -181,7 +181,7 @@ const RoadmapGenerator = () => {
               {/* Current Skill Level */}
               <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
                 <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
-                  <MdOutlineSchool className="text-purple-400" size={24} />
+                  <MdOutlineSchool className="text-indigo-400" size={24} />
                   <span>Current Skill Level</span>
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -191,7 +191,7 @@ const RoadmapGenerator = () => {
                       onClick={() => setCurrentLevel(level.id)}
                       className={`p-4 rounded-lg border cursor-pointer transition-all duration-200 ${
                         currentLevel === level.id
-                          ? 'border-purple-400 bg-purple-400/10'
+                          ? 'border-indigo-400 bg-indigo-500/10'
                           : 'border-gray-600 hover:border-gray-500'
                       }`}
                     >
@@ -205,7 +205,7 @@ const RoadmapGenerator = () => {
               {/* Time Commitment */}
               <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
                 <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
-                  <MdOutlineTimer className="text-purple-400" size={24} />
+                  <MdOutlineTimer className="text-indigo-400" size={24} />
                   <span>Weekly Time Commitment</span>
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -215,7 +215,7 @@ const RoadmapGenerator = () => {
                       onClick={() => setTimeCommitment(time.id)}
                       className={`p-4 rounded-lg border cursor-pointer transition-all duration-200 ${
                         timeCommitment === time.id
-                          ? 'border-purple-400 bg-purple-400/10'
+                          ? 'border-indigo-400 bg-indigo-500/10'
                           : 'border-gray-600 hover:border-gray-500'
                       }`}
                     >
@@ -231,7 +231,7 @@ const RoadmapGenerator = () => {
                 <button
                   onClick={handleGenerateRoadmap}
                   disabled={!selectedCareer || !currentLevel || !timeCommitment || isGenerating}
-                  className="bg-purple-600 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-300"
+                  className="bg-indigo-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-600 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-300"
                 >
                   {isGenerating ? 'Generating Your Roadmap...' : 'Generate Personalized Roadmap'}
                 </button>
@@ -242,7 +242,7 @@ const RoadmapGenerator = () => {
           {/* Loading State */}
           {isGenerating && (
             <div className="bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700 text-center">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-400 mx-auto mb-4"></div>
+              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400 mx-auto mb-4"></div>
               <h3 className="text-xl font-semibold text-white mb-2">Generating Your Career Roadmap</h3>
               <p className="text-gray-400">Analyzing your preferences and creating a personalized learning path...</p>
             </div>
@@ -255,7 +255,7 @@ const RoadmapGenerator = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
                 <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
                   <div className="flex items-center space-x-2 mb-4">
-                    <MdOutlineStars className="text-purple-400" size={20} />
+                    <MdOutlineStars className="text-indigo-400" size={20} />
                     <h3 className="text-xl font-semibold text-white">Career Path</h3>
                   </div>
                   <p className="text-2xl font-bold text-white">{generatedRoadmap.title}</p>
@@ -324,7 +324,7 @@ const RoadmapGenerator = () => {
 
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mt-8">
-                <button className="flex-1 bg-purple-600 text-white py-3 px-6 rounded-full font-semibold hover:bg-purple-700 transition-colors duration-300 flex items-center justify-center space-x-2">
+                <button className="flex-1 bg-indigo-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-indigo-600 transition-colors duration-300 flex items-center justify-center space-x-2">
                   <BiDownload size={18} />
                   <span>Download Roadmap</span>
                 </button>

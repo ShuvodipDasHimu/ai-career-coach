@@ -151,7 +151,7 @@ const CareerQA = () => {
         {/* Header */}
         <div className="flex justify-between items-center p-4 md:p-8 pb-4">
           <div className="flex items-center space-x-3">
-            <MdOutlineAssessment className="text-purple-400" size={32} />
+            <MdOutlineAssessment className="text-indigo-400" size={32} />
             <h1 className="text-3xl font-bold text-white">Career Q&A</h1>
           </div>
           <div className="flex space-x-2">
@@ -184,7 +184,7 @@ const CareerQA = () => {
                     <div className={`flex space-x-3 max-w-[80%] ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                       {/* Avatar */}
                       <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                        message.type === 'user' ? 'bg-purple-600' : 'bg-blue-600'
+                        message.type === 'user' ? 'bg-indigo-500' : 'bg-blue-600'
                       }`}>
                         {message.type === 'user' ? (
                           <BiUser size={16} />
@@ -196,7 +196,7 @@ const CareerQA = () => {
                       {/* Message Bubble */}
                       <div className={`rounded-lg p-4 ${
                         message.type === 'user' 
-                          ? 'bg-purple-600 text-white' 
+                          ? 'bg-indigo-500 text-white' 
                           : 'bg-gray-700 text-gray-100'
                       }`}>
                         <p className="text-sm leading-relaxed">{message.content}</p>
@@ -235,14 +235,14 @@ const CareerQA = () => {
                       onChange={(e) => setInputMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Ask me anything about your career..."
-                      className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 pr-12 resize-none focus:outline-none focus:ring-2 focus:ring-purple-400 border border-gray-600"
+                      className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 pr-12 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600"
                       rows="3"
                     />
                   </div>
                   <button
                     onClick={handleSendMessage}
                     disabled={!inputMessage.trim()}
-                    className="bg-purple-600 text-white p-3 rounded-lg hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center"
+                    className="bg-indigo-500 text-white p-3 rounded-lg hover:bg-indigo-600 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-300 flex items-center justify-center"
                   >
                     <MdSend size={20} />
                   </button>

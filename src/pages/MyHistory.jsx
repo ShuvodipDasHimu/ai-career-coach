@@ -112,7 +112,7 @@ const MyHistory = () => {
       case 'roadmap':
         return <FaRoad className="text-green-400" size={20} />;
       case 'chat':
-        return <FaComments className="text-purple-400" size={20} />;
+        return <FaComments className="text-indigo-400" size={20} />;
       default:
         return <MdOutlineHistory className="text-gray-400" size={20} />;
     }
@@ -170,7 +170,7 @@ const MyHistory = () => {
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
-              <MdOutlineHistory className="text-purple-400" size={32} />
+              <MdOutlineHistory className="text-indigo-400" size={32} />
               <h1 className="text-3xl font-bold text-white">My History</h1>
             </div>
             <div className="flex space-x-2">
@@ -195,7 +195,7 @@ const MyHistory = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
             <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
               <div className="flex items-center space-x-2 mb-2">
-                <MdOutlineHistory className="text-purple-400" size={20} />
+                <MdOutlineHistory className="text-indigo-400" size={20} />
                 <h3 className="text-lg font-semibold text-white">Total Activities</h3>
               </div>
               <p className="text-3xl font-bold text-white">{historyData.length}</p>
@@ -243,7 +243,7 @@ const MyHistory = () => {
                     onClick={() => setActiveFilter(filter.id)}
                     className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-200 ${
                       activeFilter === filter.id
-                        ? 'bg-purple-600 text-white'
+                        ? 'bg-indigo-500 text-white'
                         : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
                     }`}
                   >
@@ -261,7 +261,7 @@ const MyHistory = () => {
                   placeholder="Search activities..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-gray-700 text-white pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 border border-gray-600 w-full lg:w-64"
+                  className="bg-gray-700 text-white pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600 w-full lg:w-64"
                 />
               </div>
             </div>
@@ -325,7 +325,7 @@ const MyHistory = () => {
                           <div className="space-y-1 text-sm text-gray-300">
                             <div>Duration: <span className="text-white">{item.details.duration}</span></div>
                             <div>Phases: <span className="text-white">{item.details.phases}</span></div>
-                            <div>Current: <span className="text-purple-400">{item.details.currentPhase}</span></div>
+                            <div>Current: <span className="text-indigo-400">{item.details.currentPhase}</span></div>
                           </div>
                         )}
                         {item.type === 'chat' && (
@@ -334,7 +334,7 @@ const MyHistory = () => {
                             <div>Duration: <span className="text-white">{item.details.duration}</span></div>
                             <div className="flex flex-wrap gap-1 mt-2">
                               {item.details.topics.map((topic, index) => (
-                                <span key={index} className="bg-purple-600/20 text-purple-400 px-2 py-1 rounded text-xs">
+                                <span key={index} className="bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded text-xs">
                                   {topic}
                                 </span>
                               ))}

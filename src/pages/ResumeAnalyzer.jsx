@@ -77,7 +77,7 @@ const ResumeAnalyzer = () => {
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
-              <MdOutlineAnalytics className="text-purple-400" size={32} />
+              <MdOutlineAnalytics className="text-indigo-400" size={32} />
               <h1 className="text-3xl font-bold text-white">Resume Analyzer</h1>
             </div>
             <button 
@@ -94,7 +94,7 @@ const ResumeAnalyzer = () => {
             <h2 className="text-xl font-semibold text-white mb-4">Upload Your Resume</h2>
             
             {!selectedFile ? (
-              <div className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-purple-400 transition-colors">
+              <div className="border-2 border-dashed border-gray-600 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors">
                 <MdOutlineUploadFile className="mx-auto text-gray-400 mb-4" size={48} />
                 <p className="text-gray-400 mb-4">Drag and drop your resume here, or click to browse</p>
                 <input
@@ -106,7 +106,7 @@ const ResumeAnalyzer = () => {
                 />
                 <label
                   htmlFor="resume-upload"
-                  className="bg-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-purple-700 cursor-pointer transition-colors duration-300"
+                  className="bg-indigo-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-indigo-600 cursor-pointer transition-colors duration-300"
                 >
                   Choose File
                 </label>
@@ -115,14 +115,14 @@ const ResumeAnalyzer = () => {
             ) : (
               <div className="flex items-center justify-between bg-gray-700 rounded-lg p-4">
                 <div className="flex items-center space-x-3">
-                  <MdOutlineInsertDriveFile className="text-purple-400" size={24} />
+                  <MdOutlineInsertDriveFile className="text-indigo-400" size={24} />
                   <span className="text-white">{selectedFile.name}</span>
                   <span className="text-gray-400 text-sm">({(selectedFile.size / 1024 / 1024).toFixed(2)} MB)</span>
                 </div>
                 <button
                   onClick={handleAnalyze}
                   disabled={isAnalyzing}
-                  className="bg-purple-600 text-white px-6 py-2 rounded-full font-semibold hover:bg-purple-700 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-300"
+                  className="bg-indigo-500 text-white px-6 py-2 rounded-full font-semibold hover:bg-indigo-600 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-300"
                 >
                   {isAnalyzing ? 'Analyzing...' : 'Analyze Resume'}
                 </button>
@@ -137,22 +137,22 @@ const ResumeAnalyzer = () => {
               <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xl font-semibold text-white">Overall Score</h3>
-                  <MdOutlineAnalytics className="text-purple-400" size={20} />
+                  <MdOutlineAnalytics className="text-indigo-400" size={20} />
                 </div>
                 {isAnalyzing ? (
                   <div className="flex items-center space-x-2">
-                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-400"></div>
+                    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-indigo-400"></div>
                     <span className="text-gray-400">Analyzing your resume...</span>
                   </div>
                 ) : (
                   <>
                     <div className="flex items-center space-x-4 mb-2">
                       <div className="text-4xl font-bold text-white">{analysisResults?.overallScore}</div>
-                      <div className="text-purple-400 text-lg">/100</div>
+                      <div className="text-indigo-400 text-lg">/100</div>
                     </div>
                     <div className="w-full bg-gray-700 rounded-full h-2">
                       <div 
-                        className="bg-purple-400 h-2 rounded-full transition-all duration-1000"
+                        className="bg-indigo-500 h-2 rounded-full transition-all duration-1000"
                         style={{ width: `${analysisResults?.overallScore}%` }}
                       ></div>
                     </div>
@@ -239,12 +239,12 @@ const ResumeAnalyzer = () => {
               <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
                 <div className="flex justify-between items-center mb-4">
                   <h3 className="text-xl font-semibold text-white">Suggestions</h3>
-                  <BiDownload className="text-purple-400 hover:text-white cursor-pointer" size={20} />
+                  <BiDownload className="text-indigo-400 hover:text-white cursor-pointer" size={20} />
                 </div>
                 <ul className="space-y-2">
                   {analysisResults.suggestions.map((suggestion, index) => (
                     <li key={index} className="flex items-start space-x-2">
-                      <div className="w-2 h-2 bg-purple-400 rounded-full mt-2 flex-shrink-0"></div>
+                      <div className="w-2 h-2 bg-indigo-500 rounded-full mt-2 flex-shrink-0"></div>
                       <span className="text-gray-300">{suggestion}</span>
                     </li>
                   ))}
@@ -256,7 +256,7 @@ const ResumeAnalyzer = () => {
           {/* Action Buttons */}
           {analysisResults && (
             <div className="flex flex-col sm:flex-row gap-4 mt-8">
-              <button className="flex-1 bg-purple-600 text-white py-3 px-6 rounded-full font-semibold hover:bg-purple-700 transition-colors duration-300">
+              <button className="flex-1 bg-indigo-500 text-white py-3 px-6 rounded-full font-semibold hover:bg-indigo-600 transition-colors duration-300">
                 Download Analysis Report
               </button>
               <button className="flex-1 bg-gray-700 text-white py-3 px-6 rounded-full font-semibold hover:bg-gray-600 transition-colors duration-300">

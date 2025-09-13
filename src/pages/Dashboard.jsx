@@ -30,7 +30,7 @@ const Dashboard = () => {
             <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-xl font-semibold text-white">Skills Mastered</h3>
-                <LuBrainCircuit className="text-indigo-400" size={20} />
+                <LuBrainCircuit style={{color: '#6260ec'}} size={20} />
               </div>
               <p className="text-4xl font-bold text-white mb-1">12</p>
               <p className="text-sm text-gray-400">Skills completed this month</p>
@@ -58,13 +58,13 @@ const Dashboard = () => {
             <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xl font-bold text-white">AI Engineer</h3>
-                <span className="text-purple-400 font-bold">92% <span className="text-gray-400 text-sm font-normal">fit</span></span>
+                <span className="font-bold" style={{color: '#6260ec'}}>92% <span className="text-gray-400 text-sm font-normal">fit</span></span>
               </div>
               <p className="text-sm text-gray-400 mb-4">
                 Salary: ₹6-15L<br />
                 Demand: <span className="text-green-400 font-semibold">Very High</span>
               </p>
-              <button className="w-full bg-purple-600 text-white py-2 rounded-full font-semibold hover:bg-purple-700 transition-colors duration-300">
+              <button className="w-full text-white py-2 rounded-full font-semibold transition-colors duration-300" style={{backgroundColor: '#6260ec'}} onMouseOver={(e) => e.target.style.backgroundColor = '#5048d9'} onMouseOut={(e) => e.target.style.backgroundColor = '#6260ec'}>
                 Generate Roadmap
               </button>
             </div>
@@ -73,13 +73,13 @@ const Dashboard = () => {
             <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xl font-bold text-white">Data Analyst</h3>
-                <span className="text-purple-400 font-bold">87% <span className="text-gray-400 text-sm font-normal">fit</span></span>
+                <span className="font-bold" style={{color: '#6260ec'}}>87% <span className="text-gray-400 text-sm font-normal">fit</span></span>
               </div>
               <p className="text-sm text-gray-400 mb-4">
                 Salary: ₹6-15L<br />
                 Demand: <span className="text-green-400 font-semibold">Very High</span>
               </p>
-              <button className="w-full bg-purple-600 text-white py-2 rounded-full font-semibold hover:bg-purple-700 transition-colors duration-300">
+              <button className="w-full text-white py-2 rounded-full font-semibold transition-colors duration-300" style={{backgroundColor: '#6260ec'}} onMouseOver={(e) => e.target.style.backgroundColor = '#5048d9'} onMouseOut={(e) => e.target.style.backgroundColor = '#6260ec'}>
                 Generate Roadmap
               </button>
             </div>
@@ -88,13 +88,13 @@ const Dashboard = () => {
             <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
               <div className="flex justify-between items-center mb-2">
                 <h3 className="text-xl font-bold text-white">UX Designer</h3>
-                <span className="text-purple-400 font-bold">79% <span className="text-gray-400 text-sm font-normal">fit</span></span>
+                <span className="font-bold" style={{color: '#6260ec'}}>79% <span className="text-gray-400 text-sm font-normal">fit</span></span>
               </div>
               <p className="text-sm text-gray-400 mb-4">
                 Salary: ₹8-18L<br />
                 Demand: <span className="text-green-400 font-semibold">High</span>
               </p>
-              <button className="w-full bg-purple-600 text-white py-2 rounded-full font-semibold hover:bg-purple-700 transition-colors duration-300">
+              <button className="w-full text-white py-2 rounded-full font-semibold transition-colors duration-300" style={{backgroundColor: '#6260ec'}} onMouseOver={(e) => e.target.style.backgroundColor = '#5048d9'} onMouseOut={(e) => e.target.style.backgroundColor = '#6260ec'}>
                 Generate Roadmap
               </button>
             </div>
