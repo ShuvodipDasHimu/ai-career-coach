@@ -5,6 +5,7 @@ import Register from "../components/auth/Register";
 import Login from "../components/auth/Login";
 import Dashboard from "../pages/Dashboard"
 import ResumeAnalyzer from "../pages/ResumeAnalyzer"
+import RoadmapGenerator from "../pages/RoadmapGenerator"
 import ErrorPage from "../pages/ErrorPage"
 
 const router = createBrowserRouter([
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
       {
         path:"/resume-analyzer",
         Component: ResumeAnalyzer
+      },
+      {
+        path:"/roadmap-generator",
+        Component: RoadmapGenerator
       }
     ],
   },
