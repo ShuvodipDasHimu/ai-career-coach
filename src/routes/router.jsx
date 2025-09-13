@@ -3,11 +3,14 @@ import RootLayout from "../layout/RootLayout";
 import HomePage from "../pages/HomePage"
 import Register from "../components/auth/Register";
 import Login from "../components/auth/Login";
+import Dashboard from "../pages/Dashboard"
+import ErrorPage from "../pages/ErrorPage"
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: "",
@@ -20,6 +23,10 @@ const router = createBrowserRouter([
       {
         path:"/login",
         Component: Login
+      },
+      {
+        path:"/dashboard",
+        Component: Dashboard
       }
     ],
   },
