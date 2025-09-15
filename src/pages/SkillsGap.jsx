@@ -1,0 +1,254 @@
+import React, { useState } from 'react';
+import { FaChartLine, FaBookOpen, FaLightbulb, FaClock } from 'react-icons/fa';
+import { MdTrendingUp, MdAssessment } from 'react-icons/md';
+import Sidebar from '../components/dashboard/Sidebar';
+
+const SkillsGap = () => {
+  const [selectedLevel, setSelectedLevel] = useState('all');
+
+  const skillsData = [
+    {
+      id: 1,
+      name: 'Machine Learning',
+      currentLevel: 60,
+      requiredLevel: 85,
+      priority: 'High',
+      category: 'Technical',
+      timeToComplete: '3 months',
+      recommendations: ['Complete ML Specialization on Coursera', 'Build 3 ML projects', 'Practice Kaggle competitions']
+    },
+    {
+      id: 2,
+      name: 'React.js',
+      currentLevel: 75,
+      requiredLevel: 90,
+      priority: 'Medium',
+      category: 'Technical',
+      timeToComplete: '1 month',
+      recommendations: ['Master React hooks', 'Learn Next.js', 'Build full-stack application']
+    },
+    {
+      id: 3,
+      name: 'Leadership',
+      currentLevel: 45,
+      requiredLevel: 70,
+      priority: 'High',
+      category: 'Soft Skills',
+      timeToComplete: '6 months',
+      recommendations: ['Take leadership course', 'Lead a team project', 'Practice public speaking']
+    },
+    {
+      id: 4,
+      name: 'Data Analysis',
+      currentLevel: 70,
+      requiredLevel: 80,
+      priority: 'Low',
+      category: 'Technical',
+      timeToComplete: '2 months',
+      recommendations: ['Learn advanced Excel', 'Master Tableau', 'Study statistical methods']
+    },
+    {
+      id: 5,
+      name: 'Communication',
+      currentLevel: 80,
+      requiredLevel: 85,
+      priority: 'Low',
+      category: 'Soft Skills',
+      timeToComplete: '1 month',
+      recommendations: ['Practice presentations', 'Join Toastmasters', 'Write technical blogs']
+    }
+  ];
+
+  const getPriorityColor = (priority) => {
+    switch (priority.toLowerCase()) {
+      case 'high': return 'text-red-400 bg-red-900/20';
+      case 'medium': return 'text-yellow-400 bg-yellow-900/20';
+      case 'low': return 'text-green-400 bg-green-900/20';
+      default: return 'text-gray-400 bg-gray-900/20';
+    }
+  };
+
+  const getGapPercentage = (current, required) => {
+    return Math.max(0, required - current);
+  };
+
+  const filteredSkills = selectedLevel === 'all'
+    ? skillsData
+    : skillsData.filter(skill => skill.priority.toLowerCase() === selectedLevel);
+
+  return (
+    <div className="flex min-h-screen bg-gray-900 text-white">
+      {/* Sidebar Component */}
+      <Sidebar />
+
+      {/* Main content */}
+      <div className="flex-grow p-4 md:p-8">
+        <div className="mx-auto max-w-7xl">
+        {/* Header Section */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-white mb-2">Skills Gap Analysis</h1>
+          <p className="text-gray-400">Identify and bridge the gaps between your current skills and career requirements</p>
+        </div>
+
+        {/* Summary Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <FaChartLine className="text-blue-400" size={24} />
+              <span className="text-2xl font-bold">5</span>
+            </div>
+            <p className="text-gray-400">Skills to Improve</p>
+          </div>
+
+          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <MdTrendingUp className="text-red-400" size={24} />
+              <span className="text-2xl font-bold">2</span>
+            </div>
+            <p className="text-gray-400">High Priority</p>
+          </div>
+
+          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <FaClock className="text-yellow-400" size={24} />
+              <span className="text-2xl font-bold">13</span>
+            </div>
+            <p className="text-gray-400">Months to Complete</p>
+          </div>
+
+          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+            <div className="flex items-center justify-between mb-4">
+              <MdAssessment className="text-green-400" size={24} />
+              <span className="text-2xl font-bold">72%</span>
+            </div>
+            <p className="text-gray-400">Overall Progress</p>
+          </div>
+        </div>
+
+        {/* Filter Options */}
+        <div className="mb-6">
+          <div className="flex flex-wrap gap-3">
+            <button
+              onClick={() => setSelectedLevel('all')}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                selectedLevel === 'all'
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-gray-800 text-gray-400 hover:text-white'
+              }`}
+            >
+              All Skills
+            </button>
+            <button
+              onClick={() => setSelectedLevel('high')}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                selectedLevel === 'high'
+                  ? 'bg-red-600 text-white'
+                  : 'bg-gray-800 text-gray-400 hover:text-white'
+              }`}
+            >
+              High Priority
+            </button>
+            <button
+              onClick={() => setSelectedLevel('medium')}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                selectedLevel === 'medium'
+                  ? 'bg-yellow-600 text-white'
+                  : 'bg-gray-800 text-gray-400 hover:text-white'
+              }`}
+            >
+              Medium Priority
+            </button>
+            <button
+              onClick={() => setSelectedLevel('low')}
+              className={`px-4 py-2 rounded-lg transition-colors ${
+                selectedLevel === 'low'
+                  ? 'bg-green-600 text-white'
+                  : 'bg-gray-800 text-gray-400 hover:text-white'
+              }`}
+            >
+              Low Priority
+            </button>
+          </div>
+        </div>
+
+        {/* Skills Gap Cards */}
+        <div className="space-y-6">
+          {filteredSkills.map((skill) => (
+            <div key={skill.id} className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+              <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4">
+                <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-xl font-semibold text-white">{skill.name}</h3>
+                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${getPriorityColor(skill.priority)}`}>
+                      {skill.priority} Priority
+                    </span>
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300">
+                      {skill.category}
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-4 text-sm text-gray-400">
+                    <span>Current: {skill.currentLevel}%</span>
+                    <span>Required: {skill.requiredLevel}%</span>
+                    <span>Gap: {getGapPercentage(skill.currentLevel, skill.requiredLevel)}%</span>
+                    <span className="flex items-center gap-1">
+                      <FaClock size={12} />
+                      {skill.timeToComplete}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Progress Bar */}
+              <div className="mb-4">
+                <div className="flex justify-between text-sm text-gray-400 mb-2">
+                  <span>Progress</span>
+                  <span>{skill.currentLevel}% of {skill.requiredLevel}%</span>
+                </div>
+                <div className="w-full bg-gray-700 rounded-full h-3">
+                  <div className="relative h-3 rounded-full">
+                    <div
+                      className="bg-indigo-600 h-3 rounded-full transition-all duration-500"
+                      style={{ width: `${(skill.currentLevel / skill.requiredLevel) * 100}%` }}
+                    ></div>
+                    <div
+                      className="absolute top-0 bg-gray-600 h-3 rounded-r-full"
+                      style={{
+                        left: `${(skill.currentLevel / skill.requiredLevel) * 100}%`,
+                        width: `${((skill.requiredLevel - skill.currentLevel) / skill.requiredLevel) * 100}%`
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Recommendations */}
+              <div>
+                <h4 className="text-sm font-medium text-white mb-2 flex items-center gap-2">
+                  <FaLightbulb className="text-yellow-400" size={14} />
+                  Recommended Actions
+                </h4>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                  {skill.recommendations.map((rec, index) => (
+                    <div key={index} className="flex items-center gap-2 text-sm text-gray-400 bg-gray-700/50 rounded-lg p-3">
+                      <FaBookOpen size={12} className="text-indigo-400 flex-shrink-0" />
+                      <span>{rec}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {filteredSkills.length === 0 && (
+          <div className="text-center py-12">
+            <p className="text-gray-400">No skills found for the selected priority level.</p>
+          </div>
+        )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SkillsGap;

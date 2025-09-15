@@ -9,14 +9,34 @@ import {
   MdOutlineSchool,
   MdOutlineAnalytics,
   MdOutlineAssessment,
+  MdTimeline,
+  MdWork,
 } from 'react-icons/md';
-import { FaLaptopCode, FaUserTie } from 'react-icons/fa';
+import { FaLaptopCode, FaUserTie, FaChartLine } from 'react-icons/fa';
 
 const navigationItems = [
   {
     name: 'Dashboard',
     icon: MdOutlineDashboard,
     path: '/dashboard',
+    type: 'nav'
+  },
+  {
+    name: 'Skills Gap',
+    icon: FaChartLine,
+    path: '/skills-gap',
+    type: 'nav'
+  },
+  {
+    name: 'Roadmap',
+    icon: MdTimeline,
+    path: '/roadmap',
+    type: 'nav'
+  },
+  {
+    name: 'Job Matches',
+    icon: MdWork,
+    path: '/job-matches',
     type: 'nav'
   },
   {

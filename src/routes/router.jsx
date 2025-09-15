@@ -10,6 +10,9 @@ import CareerQA from "../pages/CareerQA"
 import MyHistory from "../pages/MyHistory"
 import Settings from "../pages/Settings"
 import JobRecommendations from "../pages/JobRecommendations"
+import SkillsGap from "../pages/SkillsGap"
+import Roadmap from "../pages/Roadmap"
+import JobMatches from "../pages/JobMatches"
 import ErrorPage from "../pages/ErrorPage"
 
 const router = createBrowserRouter([
@@ -57,6 +60,18 @@ const router = createBrowserRouter([
       {
         path:"/job-recommendations",
         Component: JobRecommendations
+      },
+      {
+        path:"/skills-gap",
+        Component: SkillsGap
+      },
+      {
+        path:"/roadmap",
+        Component: Roadmap
+      },
+      {
+        path:"/job-matches",
+        Component: JobMatches
       }
     ],
   },
