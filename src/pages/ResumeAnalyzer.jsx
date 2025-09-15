@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { MdOutlineAnalytics, MdOutlineUploadFile, MdOutlineInsertDriveFile } from 'react-icons/md';
 import { BiRefresh, BiDownload } from 'react-icons/bi';
 import { FaCheckCircle, FaExclamationTriangle, FaTimesCircle } from 'react-icons/fa';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const ResumeAnalyzer = () => {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -67,13 +66,8 @@ const ResumeAnalyzer = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
@@ -267,7 +261,6 @@ const ResumeAnalyzer = () => {
               </button>
             </div>
           )}
-        </div>
       </div>
     </div>
   );

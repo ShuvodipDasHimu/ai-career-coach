@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { MdOutlineSchool, MdOutlineTimer, MdOutlineStars, MdOutlinePlayArrow } from 'react-icons/md';
 import { BiRefresh, BiDownload } from 'react-icons/bi';
 import { FaCheckCircle, FaClock, FaLock, FaBook, FaCode, FaLaptopCode } from 'react-icons/fa';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const RoadmapGenerator = () => {
   const [selectedCareer, setSelectedCareer] = useState('');
@@ -130,13 +129,8 @@ const RoadmapGenerator = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
@@ -340,7 +334,6 @@ const RoadmapGenerator = () => {
               </div>
             </>
           )}
-        </div>
       </div>
     </div>
   );

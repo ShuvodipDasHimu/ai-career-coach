@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaChartBar, FaChartLine, FaChartPie, FaDownload, FaCalendarAlt, FaFilter } from 'react-icons/fa';
 import { MdAnalytics, MdTrendingUp, MdAssessment, MdDateRange } from 'react-icons/md';
 import { BiRefresh, BiExport } from 'react-icons/bi';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const Reports = () => {
   const [selectedTimeframe, setSelectedTimeframe] = useState('last30days');
@@ -321,13 +320,8 @@ const Reports = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8">
             <div>
@@ -387,7 +381,6 @@ const Reports = () => {
 
           {/* Report Content */}
           {renderReportContent()}
-        </div>
       </div>
     </div>
   );

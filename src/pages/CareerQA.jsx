@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MdOutlineAssessment, MdSend, MdOutlineHistory, MdOutlineQuestionMark } from 'react-icons/md';
 import { BiRefresh, BiBot, BiUser } from 'react-icons/bi';
 import { FaLightbulb, FaGraduationCap, FaBriefcase, FaChartLine } from 'react-icons/fa';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const CareerQA = () => {
   const [messages, setMessages] = useState([
@@ -142,12 +141,8 @@ const CareerQA = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow flex flex-col">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="h-full flex flex-col">
         {/* Header */}
         <div className="flex justify-between items-center p-4 md:p-8 pb-4">
           <div className="flex items-center space-x-3">

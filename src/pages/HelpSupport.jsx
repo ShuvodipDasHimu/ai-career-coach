@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaQuestionCircle, FaBook, FaVideo, FaEnvelope, FaPhone, FaComment, FaSearch, FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import { MdContactSupport, MdChat, MdEmail, MdLiveTv } from 'react-icons/md';
 import { BiRefresh, BiSend } from 'react-icons/bi';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const HelpSupport = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -157,13 +156,8 @@ const HelpSupport = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="mb-8">
             <h1 className="text-3xl font-bold text-white mb-2">Help & Support</h1>
@@ -372,7 +366,6 @@ const HelpSupport = () => {
               </form>
             </div>
           </div>
-        </div>
       </div>
     </div>
   );

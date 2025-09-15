@@ -123,7 +123,7 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className="flex-none w-64 bg-gray-800 text-gray-400 p-4 min-h-screen border-r border-gray-700">
+      <div className="fixed left-0 top-0 w-64 bg-gray-800 text-gray-400 p-4 h-screen border-r border-gray-700 overflow-y-auto z-10">
         <div className="flex flex-col space-y-2">
           {navigationItems.map((item, index) => (
             item.type === 'nav' ? (

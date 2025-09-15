@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaTrophy, FaMedal, FaStar, FaAward, FaChartLine, FaFire, FaCalendarCheck, FaLock } from 'react-icons/fa';
 import { MdTrendingUp, MdSpeed, MdTimeline, MdAssessment } from 'react-icons/md';
 import { BiRefresh } from 'react-icons/bi';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const ProgressBadges = () => {
   const [selectedCategory, setSelectedCategory] = useState('all');
@@ -175,13 +174,8 @@ const ProgressBadges = () => {
   const levelProgress = ((progressStats.totalPoints % 300) / 300) * 100;
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8">
             <div>
@@ -376,7 +370,6 @@ const ProgressBadges = () => {
               <p className="text-gray-400">No badges found for the selected category.</p>
             </div>
           )}
-        </div>
       </div>
     </div>
   );

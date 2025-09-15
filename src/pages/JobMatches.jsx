@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaMapMarkerAlt, FaDollarSign, FaClock, FaBuilding, FaHeart, FaHeartBroken, FaExternalLinkAlt } from 'react-icons/fa';
 import { MdWork, MdTrendingUp, MdFilterList } from 'react-icons/md';
 import { BiRefresh } from 'react-icons/bi';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const JobMatches = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
@@ -133,13 +132,8 @@ const JobMatches = () => {
     : jobMatches.filter(job => job.matchScore >= 85);
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8">
           <div>
@@ -351,7 +345,6 @@ const JobMatches = () => {
             </button>
           </div>
         )}
-        </div>
       </div>
     </div>
   );

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaCheckCircle, FaCircle, FaClock, FaLightbulb, FaStar, FaBookOpen } from 'react-icons/fa';
 import { MdTimeline, MdSpeed, MdTrendingUp } from 'react-icons/md';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const Roadmap = () => {
   const [selectedPath, setSelectedPath] = useState('ai-engineer');
@@ -162,13 +161,8 @@ const Roadmap = () => {
   const progressPercentage = (currentRoadmap.completedSteps / currentRoadmap.totalSteps) * 100;
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-6xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
         {/* Header Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Career Roadmap</h1>
@@ -335,7 +329,6 @@ const Roadmap = () => {
               </div>
             </div>
           ))}
-        </div>
         </div>
       </div>
     </div>

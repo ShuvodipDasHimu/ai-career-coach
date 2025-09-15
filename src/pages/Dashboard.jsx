@@ -1,17 +1,11 @@
 import React from 'react';
 import { BiRefresh } from 'react-icons/bi';
 import { LuBrainCircuit } from 'react-icons/lu';
-import Sidebar from '../components/dashboard/Sidebar'; // Import the new Sidebar component
 
 const Dashboard = () => {
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main dashboard content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
           {/* Top-level summary cards */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
             {/* Current Career Path Card */}
@@ -99,7 +93,6 @@ const Dashboard = () => {
               </button>
             </div>
           </div>
-        </div>
       </div>
     </div>
   );

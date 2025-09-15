@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FaUserTie, FaMapMarkerAlt, FaDollarSign, FaClock, FaBuilding, FaHeart, FaExternalLinkAlt } from 'react-icons/fa';
 import { MdOutlineWorkOutline, MdOutlineLocationOn, MdOutlineAttachMoney, MdSearch, MdFilterList } from 'react-icons/md';
 import { BiRefresh, BiBookmark, BiBookmarkHeart } from 'react-icons/bi';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const JobRecommendations = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -198,13 +197,8 @@ const JobRecommendations = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
@@ -407,7 +401,6 @@ const JobRecommendations = () => {
               </button>
             </div>
           )}
-        </div>
       </div>
     </div>
   );

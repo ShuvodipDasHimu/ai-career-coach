@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FaChartLine, FaBookOpen, FaLightbulb, FaClock } from 'react-icons/fa';
 import { MdTrendingUp, MdAssessment } from 'react-icons/md';
-import Sidebar from '../components/dashboard/Sidebar';
 
 const SkillsGap = () => {
   const [selectedLevel, setSelectedLevel] = useState('all');
@@ -77,13 +76,8 @@ const SkillsGap = () => {
     : skillsData.filter(skill => skill.priority.toLowerCase() === selectedLevel);
 
   return (
-    <div className="flex min-h-screen bg-gray-900 text-white">
-      {/* Sidebar Component */}
-      <Sidebar />
-
-      {/* Main content */}
-      <div className="flex-grow p-4 md:p-8">
-        <div className="mx-auto max-w-7xl">
+    <div className="min-h-screen bg-gray-900 text-white">
+      <div className="p-4 md:p-8">
         {/* Header Section */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white mb-2">Skills Gap Analysis</h1>
@@ -245,7 +239,6 @@ const SkillsGap = () => {
             <p className="text-gray-400">No skills found for the selected priority level.</p>
           </div>
         )}
-        </div>
       </div>
     </div>
   );
