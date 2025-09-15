@@ -13,6 +13,9 @@ import JobRecommendations from "../pages/JobRecommendations"
 import SkillsGap from "../pages/SkillsGap"
 import Roadmap from "../pages/Roadmap"
 import JobMatches from "../pages/JobMatches"
+import ProgressBadges from "../pages/ProgressBadges"
+import HelpSupport from "../pages/HelpSupport"
+import Reports from "../pages/Reports"
 import ErrorPage from "../pages/ErrorPage"
 
 const router = createBrowserRouter([
@@ -72,6 +75,18 @@ const router = createBrowserRouter([
       {
         path:"/job-matches",
         Component: JobMatches
+      },
+      {
+        path:"/progress-badges",
+        Component: ProgressBadges
+      },
+      {
+        path:"/help-support",
+        Component: HelpSupport
+      },
+      {
+        path:"/reports",
+        Component: Reports
       }
     ],
   },

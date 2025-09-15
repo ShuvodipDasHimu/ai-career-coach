@@ -11,8 +11,10 @@ import {
   MdOutlineAssessment,
   MdTimeline,
   MdWork,
+  MdHelp,
+  MdBarChart,
 } from 'react-icons/md';
-import { FaLaptopCode, FaUserTie, FaChartLine } from 'react-icons/fa';
+import { FaLaptopCode, FaUserTie, FaChartLine, FaTrophy } from 'react-icons/fa';
 
 const navigationItems = [
   {
@@ -67,6 +69,24 @@ const navigationItems = [
     name: 'My History',
     icon: MdOutlineHistory,
     path: '/my-history',
+    type: 'nav'
+  },
+  {
+    name: 'Progress & Badges',
+    icon: FaTrophy,
+    path: '/progress-badges',
+    type: 'nav'
+  },
+  {
+    name: 'Reports',
+    icon: MdBarChart,
+    path: '/reports',
+    type: 'nav'
+  },
+  {
+    name: 'Help & Support',
+    icon: MdHelp,
+    path: '/help-support',
     type: 'nav'
   },
   {
