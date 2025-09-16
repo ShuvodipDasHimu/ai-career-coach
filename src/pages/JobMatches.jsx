@@ -117,10 +117,10 @@ const JobMatches = () => {
   };
 
   const getMatchColor = (score) => {
-    if (score >= 90) return 'text-green-400 bg-green-900/20';
-    if (score >= 80) return 'text-yellow-400 bg-yellow-900/20';
-    if (score >= 70) return 'text-orange-400 bg-orange-900/20';
-    return 'text-red-400 bg-red-900/20';
+    if (score >= 90) return 'text-green-700 bg-green-100';
+    if (score >= 80) return 'text-yellow-700 bg-yellow-100';
+    if (score >= 70) return 'text-orange-700 bg-orange-100';
+    return 'text-red-700 bg-red-100';
   };
 
   const filteredJobs = selectedFilter === 'all'
@@ -132,13 +132,13 @@ const JobMatches = () => {
     : jobMatches.filter(job => job.matchScore >= 85);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="p-4 md:p-8">
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white mb-2">Job Matches</h1>
-            <p className="text-gray-400">AI-powered job recommendations tailored to your profile</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Job Matches</h1>
+            <p className="text-gray-600">AI-powered job recommendations tailored to your profile</p>
           </div>
           <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors mt-4 lg:mt-0">
             <BiRefresh size={16} />
@@ -148,49 +148,49 @@ const JobMatches = () => {
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
-              <MdWork className="text-indigo-400" size={24} />
+              <MdWork className="text-indigo-600" size={24} />
               <span className="text-2xl font-bold">{jobMatches.length}</span>
             </div>
-            <p className="text-gray-400">Total Matches</p>
+            <p className="text-gray-600">Total Matches</p>
           </div>
 
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
-              <MdTrendingUp className="text-green-400" size={24} />
+              <MdTrendingUp className="text-green-600" size={24} />
               <span className="text-2xl font-bold">{jobMatches.filter(job => job.matchScore >= 85).length}</span>
             </div>
-            <p className="text-gray-400">High Match</p>
+            <p className="text-gray-600">High Match</p>
           </div>
 
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
-              <FaHeart className="text-pink-400" size={24} />
+              <FaHeart className="text-pink-600" size={24} />
               <span className="text-2xl font-bold">{savedJobs.size}</span>
             </div>
-            <p className="text-gray-400">Saved Jobs</p>
+            <p className="text-gray-600">Saved Jobs</p>
           </div>
 
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
-              <FaClock className="text-yellow-400" size={24} />
+              <FaClock className="text-yellow-600" size={24} />
               <span className="text-2xl font-bold">3</span>
             </div>
-            <p className="text-gray-400">Applied Today</p>
+            <p className="text-gray-600">Applied Today</p>
           </div>
         </div>
 
         {/* Filter Options */}
         <div className="flex items-center gap-4 mb-6">
-          <MdFilterList className="text-gray-400" size={20} />
+          <MdFilterList className="text-gray-600" size={20} />
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setSelectedFilter('all')}
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedFilter === 'all'
                   ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
+                  : 'bg-white text-gray-600 hover:text-gray-900'
               }`}
             >
               All Jobs
@@ -200,7 +200,7 @@ const JobMatches = () => {
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedFilter === 'high-match'
                   ? 'bg-green-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
+                  : 'bg-white text-gray-600 hover:text-gray-900'
               }`}
             >
               High Match (85%+)
@@ -210,7 +210,7 @@ const JobMatches = () => {
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedFilter === 'remote'
                   ? 'bg-blue-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
+                  : 'bg-white text-gray-600 hover:text-gray-900'
               }`}
             >
               Remote Jobs
@@ -220,7 +220,7 @@ const JobMatches = () => {
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedFilter === 'saved'
                   ? 'bg-pink-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
+                  : 'bg-white text-gray-600 hover:text-gray-900'
               }`}
             >
               Saved Jobs
@@ -231,24 +231,24 @@ const JobMatches = () => {
         {/* Job Cards */}
         <div className="space-y-6">
           {filteredJobs.map((job) => (
-            <div key={job.id} className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-gray-600 transition-all duration-200">
+            <div key={job.id} className="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-all duration-200">
               <div className="flex flex-col lg:flex-row lg:items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-start gap-4 mb-4">
                     <div className="text-3xl">{job.logo}</div>
                     <div className="flex-1">
                       <div className="flex flex-col lg:flex-row lg:items-center gap-3 mb-2">
-                        <h3 className="text-xl font-semibold text-white">{job.title}</h3>
+                        <h3 className="text-xl font-semibold text-gray-900">{job.title}</h3>
                         <span className={`px-3 py-1 rounded-full text-xs font-bold ${getMatchColor(job.matchScore)}`}>
                           {job.matchScore}% Match
                         </span>
                         {job.remote && (
-                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-900/30 text-blue-300">
+                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
                             Remote
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-4 text-gray-400 mb-3">
+                      <div className="flex items-center gap-4 text-gray-600 mb-3">
                         <span className="flex items-center gap-1">
                           <FaBuilding size={12} />
                           {job.company}
@@ -263,18 +263,18 @@ const JobMatches = () => {
                         </span>
                         <span className="text-sm">{job.postedDate}</span>
                       </div>
-                      <p className="text-gray-300 mb-4">{job.description}</p>
+                      <p className="text-gray-700 mb-4">{job.description}</p>
                     </div>
                   </div>
 
                   {/* Skills */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium text-white mb-2">Required Skills</h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">Required Skills</h4>
                     <div className="flex flex-wrap gap-2">
                       {job.skills.map((skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-indigo-900/30 text-indigo-300 rounded-full text-sm"
+                          className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm"
                         >
                           {skill}
                         </span>
@@ -284,8 +284,8 @@ const JobMatches = () => {
 
                   {/* Requirements */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium text-white mb-2">Key Requirements</h4>
-                    <ul className="list-disc list-inside text-gray-400 text-sm space-y-1">
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">Key Requirements</h4>
+                    <ul className="list-disc list-inside text-gray-600 text-sm space-y-1">
                       {job.requirements.map((req, index) => (
                         <li key={index}>{req}</li>
                       ))}
@@ -294,12 +294,12 @@ const JobMatches = () => {
 
                   {/* Benefits */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-medium text-white mb-2">Benefits</h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2">Benefits</h4>
                     <div className="flex flex-wrap gap-2">
                       {job.benefits.map((benefit, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-sm"
+                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
                         >
                           {benefit}
                         </span>
@@ -315,7 +315,7 @@ const JobMatches = () => {
                     className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-colors ${
                       savedJobs.has(job.id)
                         ? 'bg-pink-600 text-white hover:bg-pink-700'
-                        : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     {savedJobs.has(job.id) ? <FaHeartBroken size={14} /> : <FaHeart size={14} />}
@@ -325,7 +325,7 @@ const JobMatches = () => {
                     <FaExternalLinkAlt size={14} />
                     Apply Now
                   </button>
-                  <button className="flex items-center justify-center gap-2 bg-gray-700 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors">
+                  <button className="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg transition-colors">
                     View Details
                   </button>
                 </div>
@@ -336,10 +336,10 @@ const JobMatches = () => {
 
         {filteredJobs.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-400 mb-4">No jobs found for the selected filter.</p>
+            <p className="text-gray-600 mb-4">No jobs found for the selected filter.</p>
             <button
               onClick={() => setSelectedFilter('all')}
-              className="text-indigo-400 hover:text-indigo-300 transition-colors"
+              className="text-indigo-600 hover:text-indigo-500 transition-colors"
             >
               View all jobs
             </button>

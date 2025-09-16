@@ -141,36 +141,33 @@ const CareerQA = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
-      <div className="h-full flex flex-col">
-        {/* Header */}
-        <div className="flex justify-between items-center p-4 md:p-8 pb-4">
-          <div className="flex items-center space-x-3">
-            <MdOutlineAssessment className="text-indigo-400" size={32} />
-            <h1 className="text-3xl font-bold text-white">Career Q&A</h1>
-          </div>
-          <div className="flex space-x-2">
-            <button className="flex items-center space-x-2 bg-gray-800 text-gray-400 px-4 py-2 rounded-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors">
-              <MdOutlineHistory size={18} />
-              <span className="hidden md:inline">History</span>
-            </button>
-            <button 
-              onClick={handleClearChat}
-              className="flex items-center space-x-2 bg-gray-800 text-gray-400 px-4 py-2 rounded-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
-            >
-              <BiRefresh size={18} />
-              <span className="hidden md:inline">Clear Chat</span>
-            </button>
-          </div>
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      <div className="p-4 md:p-8">
+        {/* Header Section */}
+        <div className="mb-8">
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Career Q&A</h1>
+          <p className="text-gray-600">Get personalized career advice and answers to your professional questions</p>
         </div>
 
-        <div className="flex-grow flex px-4 md:px-8 pb-8">
-          {/* Main Chat Area */}
-          <div className="flex-grow flex flex-col max-w-4xl mx-auto">
-            {/* Messages Container */}
-            <div className="bg-gray-800 rounded-xl shadow-lg border border-gray-700 mb-4 flex flex-col h-[600px]">
-              {/* Messages */}
-              <div className="flex-1 overflow-y-auto p-6 space-y-4">
+        {/* Action Buttons */}
+        <div className="flex justify-end space-x-2 mb-6">
+          <button className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors">
+            <MdOutlineHistory size={18} />
+            <span className="hidden md:inline">History</span>
+          </button>
+          <button
+            onClick={handleClearChat}
+            className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+          >
+            <BiRefresh size={18} />
+            <span className="hidden md:inline">Clear Chat</span>
+          </button>
+        </div>
+
+        {/* Main Chat Area */}
+        <div className="bg-white rounded-xl shadow-lg border border-gray-200 mb-6">
+          {/* Messages */}
+          <div className="p-6 space-y-4 min-h-96 max-h-96 overflow-y-auto">
                 {messages.map((message) => (
                   <div
                     key={message.id}
@@ -179,7 +176,7 @@ const CareerQA = () => {
                     <div className={`flex space-x-3 max-w-[80%] ${message.type === 'user' ? 'flex-row-reverse space-x-reverse' : ''}`}>
                       {/* Avatar */}
                       <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-                        message.type === 'user' ? 'bg-indigo-500' : 'bg-blue-600'
+                        message.type === 'user' ? 'bg-indigo-500 text-white' : 'bg-blue-600 text-white'
                       }`}>
                         {message.type === 'user' ? (
                           <BiUser size={16} />
@@ -190,9 +187,9 @@ const CareerQA = () => {
 
                       {/* Message Bubble */}
                       <div className={`rounded-lg p-4 ${
-                        message.type === 'user' 
-                          ? 'bg-indigo-500 text-white' 
-                          : 'bg-gray-700 text-gray-100'
+                        message.type === 'user'
+                          ? 'bg-indigo-500 text-white'
+                          : 'bg-gray-100 text-gray-900'
                       }`}>
                         <p className="text-sm leading-relaxed">{message.content}</p>
                         <p className="text-xs opacity-70 mt-2">{message.timestamp}</p>
@@ -205,10 +202,10 @@ const CareerQA = () => {
                 {isTyping && (
                   <div className="flex justify-start">
                     <div className="flex space-x-3 max-w-[80%]">
-                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center">
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center">
                         <BiBot size={16} />
                       </div>
-                      <div className="bg-gray-700 rounded-lg p-4">
+                      <div className="bg-gray-100 rounded-lg p-4">
                         <div className="flex space-x-1">
                           <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
                           <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
@@ -218,11 +215,11 @@ const CareerQA = () => {
                     </div>
                   </div>
                 )}
-                <div ref={messagesEndRef} />
-              </div>
+            <div ref={messagesEndRef} />
+          </div>
 
-              {/* Input Area */}
-              <div className="flex-shrink-0 p-6 border-t border-gray-700">
+          {/* Input Area */}
+          <div className="p-6 border-t border-gray-200">
                 <div className="flex space-x-4">
                   <div className="flex-grow relative">
                     <textarea
@@ -230,7 +227,7 @@ const CareerQA = () => {
                       onChange={(e) => setInputMessage(e.target.value)}
                       onKeyPress={handleKeyPress}
                       placeholder="Ask me anything about your career..."
-                      className="w-full bg-gray-700 text-white rounded-lg px-4 py-3 pr-12 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600"
+                      className="w-full bg-gray-100 text-gray-900 rounded-lg px-4 py-3 pr-12 resize-none focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300"
                       rows="3"
                     />
                   </div>
@@ -242,8 +239,6 @@ const CareerQA = () => {
                     <MdSend size={20} />
                   </button>
                 </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

@@ -113,7 +113,7 @@ const MyHistory = () => {
       case 'chat':
         return <FaComments className="text-indigo-400" size={20} />;
       default:
-        return <MdOutlineHistory className="text-gray-400" size={20} />;
+        return <MdOutlineHistory className="text-gray-600" size={20} />;
     }
   };
 
@@ -126,7 +126,7 @@ const MyHistory = () => {
       case 'failed':
         return 'text-red-400 bg-red-400/10';
       default:
-        return 'text-gray-400 bg-gray-400/10';
+        return 'text-gray-600 bg-gray-400/10';
     }
   };
 
@@ -159,25 +159,25 @@ const MyHistory = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
               <MdOutlineHistory className="text-indigo-400" size={32} />
-              <h1 className="text-3xl font-bold text-white">My History</h1>
+              <h1 className="text-3xl font-bold text-gray-900">My History</h1>
             </div>
             <div className="flex space-x-2">
               <button 
                 onClick={handleExportHistory}
-                className="flex items-center space-x-2 bg-gray-800 text-gray-400 px-4 py-2 rounded-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+                className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               >
                 <BiDownload size={18} />
                 <span className="hidden md:inline">Export</span>
               </button>
               <button 
                 onClick={handleClearHistory}
-                className="flex items-center space-x-2 bg-gray-800 text-gray-400 px-4 py-2 rounded-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+                className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               >
                 <BiRefresh size={18} />
                 <span className="hidden md:inline">Clear All</span>
@@ -187,47 +187,47 @@ const MyHistory = () => {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <MdOutlineHistory className="text-indigo-400" size={20} />
-                <h3 className="text-lg font-semibold text-white">Total Activities</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Total Activities</h3>
               </div>
-              <p className="text-3xl font-bold text-white">{historyData.length}</p>
+              <p className="text-3xl font-bold text-gray-900">{historyData.length}</p>
             </div>
 
-            <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <FaFileAlt className="text-blue-400" size={20} />
-                <h3 className="text-lg font-semibold text-white">Resume Analysis</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Resume Analysis</h3>
               </div>
-              <p className="text-3xl font-bold text-white">
+              <p className="text-3xl font-bold text-gray-900">
                 {historyData.filter(item => item.type === 'resume').length}
               </p>
             </div>
 
-            <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <FaRoad className="text-green-400" size={20} />
-                <h3 className="text-lg font-semibold text-white">Career Roadmaps</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Career Roadmaps</h3>
               </div>
-              <p className="text-3xl font-bold text-white">
+              <p className="text-3xl font-bold text-gray-900">
                 {historyData.filter(item => item.type === 'roadmap').length}
               </p>
             </div>
 
-            <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <FaComments className="text-yellow-400" size={20} />
-                <h3 className="text-lg font-semibold text-white">Q&A Sessions</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Q&A Sessions</h3>
               </div>
-              <p className="text-3xl font-bold text-white">
+              <p className="text-3xl font-bold text-gray-900">
                 {historyData.filter(item => item.type === 'chat').length}
               </p>
             </div>
           </div>
 
           {/* Filters and Search */}
-          <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
               {/* Filter Buttons */}
               <div className="flex flex-wrap gap-2">
@@ -237,8 +237,8 @@ const MyHistory = () => {
                     onClick={() => setActiveFilter(filter.id)}
                     className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-200 ${
                       activeFilter === filter.id
-                        ? 'bg-indigo-500 text-white'
-                        : 'bg-gray-700 text-gray-300 hover:bg-gray-600 hover:text-white'
+                        ? 'bg-indigo-500 text-gray-900'
+                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
                     }`}
                   >
                     <filter.icon size={16} />
@@ -249,13 +249,13 @@ const MyHistory = () => {
 
               {/* Search Bar */}
               <div className="relative">
-                <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={20} />
                 <input
                   type="text"
                   placeholder="Search activities..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-gray-700 text-white pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600 w-full lg:w-64"
+                  className="bg-gray-100 text-gray-900 pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300 w-full lg:w-64"
                 />
               </div>
             </div>
@@ -264,16 +264,16 @@ const MyHistory = () => {
           {/* History List */}
           <div className="space-y-4">
             {filteredHistory.length === 0 ? (
-              <div className="bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700 text-center">
-                <MdOutlineHistory className="mx-auto text-gray-400 mb-4" size={48} />
-                <h3 className="text-xl font-semibold text-white mb-2">No History Found</h3>
-                <p className="text-gray-400">
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200 text-center">
+                <MdOutlineHistory className="mx-auto text-gray-600 mb-4" size={48} />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">No History Found</h3>
+                <p className="text-gray-600">
                   {searchTerm ? 'No activities match your search criteria.' : 'Start using the platform to see your activity history here.'}
                 </p>
               </div>
             ) : (
               filteredHistory.map((item) => (
-                <div key={item.id} className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 hover:border-gray-600 transition-colors">
+                <div key={item.id} className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:border-gray-300 transition-colors">
                   <div className="flex items-start justify-between">
                     <div className="flex items-start space-x-4 flex-1">
                       <div className="flex-shrink-0">
@@ -282,13 +282,13 @@ const MyHistory = () => {
                       
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-3 mb-2">
-                          <h3 className="text-lg font-semibold text-white">{item.title}</h3>
+                          <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
                           <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(item.status)}`}>
                             {item.status}
                           </span>
                         </div>
                         
-                        <p className="text-gray-400 mb-3">{item.description}</p>
+                        <p className="text-gray-600 mb-3">{item.description}</p>
                         
                         <div className="flex items-center space-x-6 text-sm text-gray-500">
                           <div className="flex items-center space-x-1">
@@ -305,27 +305,27 @@ const MyHistory = () => {
 
                     {/* Details Panel */}
                     <div className="flex-shrink-0 ml-6">
-                      <div className="bg-gray-700 rounded-lg p-4 min-w-[200px]">
-                        <h4 className="text-sm font-semibold text-white mb-2">Details</h4>
+                      <div className="bg-gray-100 rounded-lg p-4 min-w-[200px]">
+                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Details</h4>
                         {item.type === 'resume' && (
-                          <div className="space-y-1 text-sm text-gray-300">
-                            <div>Score: <span className="text-white">{item.details.score}%</span></div>
+                          <div className="space-y-1 text-sm text-gray-700">
+                            <div>Score: <span className="text-gray-900">{item.details.score}%</span></div>
                             <div>Strengths: <span className="text-green-400">{item.details.strengths}</span></div>
                             <div>Improvements: <span className="text-yellow-400">{item.details.improvements}</span></div>
                             <div>Missing Skills: <span className="text-red-400">{item.details.missingSkills}</span></div>
                           </div>
                         )}
                         {item.type === 'roadmap' && (
-                          <div className="space-y-1 text-sm text-gray-300">
-                            <div>Duration: <span className="text-white">{item.details.duration}</span></div>
-                            <div>Phases: <span className="text-white">{item.details.phases}</span></div>
+                          <div className="space-y-1 text-sm text-gray-700">
+                            <div>Duration: <span className="text-gray-900">{item.details.duration}</span></div>
+                            <div>Phases: <span className="text-gray-900">{item.details.phases}</span></div>
                             <div>Current: <span className="text-indigo-400">{item.details.currentPhase}</span></div>
                           </div>
                         )}
                         {item.type === 'chat' && (
-                          <div className="space-y-1 text-sm text-gray-300">
-                            <div>Messages: <span className="text-white">{item.details.messages}</span></div>
-                            <div>Duration: <span className="text-white">{item.details.duration}</span></div>
+                          <div className="space-y-1 text-sm text-gray-700">
+                            <div>Messages: <span className="text-gray-900">{item.details.messages}</span></div>
+                            <div>Duration: <span className="text-gray-900">{item.details.duration}</span></div>
                             <div className="flex flex-wrap gap-1 mt-2">
                               {item.details.topics.map((topic, index) => (
                                 <span key={index} className="bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded text-xs">
@@ -346,7 +346,7 @@ const MyHistory = () => {
           {/* Load More Button */}
           {filteredHistory.length > 0 && (
             <div className="text-center mt-8">
-              <button className="bg-gray-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-gray-600 transition-colors duration-300">
+              <button className="bg-gray-100 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300">
                 Load More Activities
               </button>
             </div>

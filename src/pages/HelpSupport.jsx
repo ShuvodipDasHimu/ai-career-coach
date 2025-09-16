@@ -156,42 +156,42 @@ const HelpSupport = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold text-white mb-2">Help & Support</h1>
-            <p className="text-gray-400">Get the help you need to succeed in your career journey</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2">Help & Support</h1>
+            <p className="text-gray-600">Get the help you need to succeed in your career journey</p>
           </div>
 
           {/* Quick Support Options */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {supportOptions.map((option) => (
-              <div key={option.id} className="bg-gray-800 rounded-xl p-6 border border-gray-700 hover:border-gray-600 transition-colors cursor-pointer">
+              <div key={option.id} className="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors cursor-pointer">
                 <div className="flex items-center justify-between mb-4">
                   <option.icon className={`${option.color}`} size={24} />
-                  <span className="text-xs text-gray-400">{option.responseTime}</span>
+                  <span className="text-xs text-gray-600">{option.responseTime}</span>
                 </div>
-                <h3 className="text-lg font-semibold text-white mb-2">{option.title}</h3>
-                <p className="text-sm text-gray-400 mb-3">{option.description}</p>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">{option.title}</h3>
+                <p className="text-sm text-gray-600 mb-3">{option.description}</p>
                 <div className="text-xs text-gray-500">{option.availability}</div>
               </div>
             ))}
           </div>
 
           {/* Search and Categories */}
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700 mb-8">
-            <h2 className="text-2xl font-bold text-white mb-6">Frequently Asked Questions</h2>
+          <div className="bg-white rounded-xl p-6 border border-gray-200 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
 
             {/* Search Bar */}
             <div className="relative mb-6">
-              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={16} />
+              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={16} />
               <input
                 type="text"
                 placeholder="Search FAQ..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white"
+                className="w-full pl-10 pr-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
               />
             </div>
 
@@ -201,8 +201,8 @@ const HelpSupport = () => {
                 onClick={() => setSelectedCategory('all')}
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   selectedCategory === 'all'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-700 text-gray-400 hover:text-white'
+                    ? 'bg-indigo-600 text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
                 }`}
               >
                 All
@@ -211,8 +211,8 @@ const HelpSupport = () => {
                 onClick={() => setSelectedCategory('account')}
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   selectedCategory === 'account'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-700 text-gray-400 hover:text-white'
+                    ? 'bg-indigo-600 text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
                 }`}
               >
                 Account
@@ -221,8 +221,8 @@ const HelpSupport = () => {
                 onClick={() => setSelectedCategory('features')}
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   selectedCategory === 'features'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-700 text-gray-400 hover:text-white'
+                    ? 'bg-indigo-600 text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
                 }`}
               >
                 Features
@@ -231,8 +231,8 @@ const HelpSupport = () => {
                 onClick={() => setSelectedCategory('billing')}
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   selectedCategory === 'billing'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-700 text-gray-400 hover:text-white'
+                    ? 'bg-indigo-600 text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
                 }`}
               >
                 Billing
@@ -241,8 +241,8 @@ const HelpSupport = () => {
                 onClick={() => setSelectedCategory('technical')}
                 className={`px-4 py-2 rounded-lg transition-colors ${
                   selectedCategory === 'technical'
-                    ? 'bg-indigo-600 text-white'
-                    : 'bg-gray-700 text-gray-400 hover:text-white'
+                    ? 'bg-indigo-600 text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
                 }`}
               >
                 Technical
@@ -252,20 +252,20 @@ const HelpSupport = () => {
             {/* FAQ List */}
             <div className="space-y-4">
               {filteredFaqs.map((faq) => (
-                <div key={faq.id} className="border border-gray-700 rounded-lg">
+                <div key={faq.id} className="border border-gray-200 rounded-lg">
                   <button
                     onClick={() => setExpandedFaq(expandedFaq === faq.id ? null : faq.id)}
-                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-700/50 transition-colors"
+                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-100/50 transition-colors"
                   >
-                    <span className="font-medium text-white">{faq.question}</span>
+                    <span className="font-medium text-gray-900">{faq.question}</span>
                     {expandedFaq === faq.id ? (
-                      <FaChevronUp className="text-gray-400" size={16} />
+                      <FaChevronUp className="text-gray-600" size={16} />
                     ) : (
-                      <FaChevronDown className="text-gray-400" size={16} />
+                      <FaChevronDown className="text-gray-600" size={16} />
                     )}
                   </button>
                   {expandedFaq === faq.id && (
-                    <div className="px-4 pb-4 text-gray-300 border-t border-gray-700">
+                    <div className="px-4 pb-4 text-gray-700 border-t border-gray-200">
                       <p className="mt-3">{faq.answer}</p>
                     </div>
                   )}
@@ -275,22 +275,22 @@ const HelpSupport = () => {
 
             {filteredFaqs.length === 0 && (
               <div className="text-center py-8">
-                <p className="text-gray-400">No FAQs found matching your search.</p>
+                <p className="text-gray-600">No FAQs found matching your search.</p>
               </div>
             )}
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Video Tutorials */}
-            <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-              <h2 className="text-2xl font-bold text-white mb-6">Video Tutorials</h2>
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Video Tutorials</h2>
               <div className="space-y-4">
                 {tutorials.map((tutorial) => (
-                  <div key={tutorial.id} className="flex items-center gap-4 p-4 bg-gray-700/50 rounded-lg hover:bg-gray-700 transition-colors cursor-pointer">
+                  <div key={tutorial.id} className="flex items-center gap-4 p-4 bg-gray-100/50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
                     <FaVideo className="text-indigo-400" size={20} />
                     <div className="flex-1">
-                      <h3 className="font-medium text-white">{tutorial.title}</h3>
-                      <p className="text-sm text-gray-400">{tutorial.description}</p>
+                      <h3 className="font-medium text-gray-900">{tutorial.title}</h3>
+                      <p className="text-sm text-gray-600">{tutorial.description}</p>
                     </div>
                     <span className="text-xs text-gray-500">{tutorial.duration}</span>
                   </div>
@@ -299,28 +299,28 @@ const HelpSupport = () => {
             </div>
 
             {/* Contact Form */}
-            <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
-              <h2 className="text-2xl font-bold text-white mb-6">Contact Support</h2>
+            <div className="bg-white rounded-xl p-6 border border-gray-200">
+              <h2 className="text-2xl font-bold text-gray-900 mb-6">Contact Support</h2>
               <form onSubmit={handleContactSubmit} className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Subject</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
                   <input
                     type="text"
                     value={contactForm.subject}
                     onChange={(e) => setContactForm({...contactForm, subject: e.target.value})}
                     placeholder="Brief description of your issue"
-                    className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white"
+                    className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
                     required
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Category</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Category</label>
                     <select
                       value={contactForm.category}
                       onChange={(e) => setContactForm({...contactForm, category: e.target.value})}
-                      className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white"
+                      className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
                     >
                       <option value="general">General</option>
                       <option value="technical">Technical</option>
@@ -330,11 +330,11 @@ const HelpSupport = () => {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">Priority</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">Priority</label>
                     <select
                       value={contactForm.priority}
                       onChange={(e) => setContactForm({...contactForm, priority: e.target.value})}
-                      className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white"
+                      className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
                     >
                       <option value="low">Low</option>
                       <option value="medium">Medium</option>
@@ -345,20 +345,20 @@ const HelpSupport = () => {
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-300 mb-2">Message</label>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Message</label>
                   <textarea
                     value={contactForm.message}
                     onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
                     placeholder="Describe your issue in detail..."
                     rows={5}
-                    className="w-full px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-white resize-none"
+                    className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 resize-none"
                     required
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 rounded-lg transition-colors"
+                  className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-gray-900 px-4 py-3 rounded-lg transition-colors"
                 >
                   <BiSend size={16} />
                   Send Message

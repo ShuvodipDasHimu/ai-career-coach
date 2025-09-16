@@ -113,7 +113,7 @@ const RoadmapGenerator = () => {
       case 'next':
         return <FaClock className="text-yellow-400" size={18} />;
       default:
-        return <FaLock className="text-gray-400" size={18} />;
+        return <FaLock className="text-gray-600" size={18} />;
     }
   };
 
@@ -124,22 +124,22 @@ const RoadmapGenerator = () => {
       case 'next':
         return 'border-yellow-400 bg-yellow-400/10';
       default:
-        return 'border-gray-600 bg-gray-700/50';
+        return 'border-gray-300 bg-gray-100/50';
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
               <MdOutlineSchool className="text-indigo-400" size={32} />
-              <h1 className="text-3xl font-bold text-white">Career Roadmap Generator</h1>
+              <h1 className="text-3xl font-bold text-gray-900">Career Roadmap Generator</h1>
             </div>
             <button 
               onClick={handleResetRoadmap}
-              className="flex items-center space-x-2 bg-gray-800 text-gray-400 px-4 py-2 rounded-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+              className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors"
             >
               <BiRefresh size={18} />
               <span>Reset Roadmap</span>
@@ -149,8 +149,8 @@ const RoadmapGenerator = () => {
           {!generatedRoadmap && (
             <>
               {/* Career Path Selection */}
-              <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
-                <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
                   <MdOutlineStars className="text-indigo-400" size={24} />
                   <span>Select Your Target Career</span>
                 </h2>
@@ -162,19 +162,19 @@ const RoadmapGenerator = () => {
                       className={`p-4 rounded-lg border cursor-pointer transition-all duration-200 ${
                         selectedCareer === career.id
                           ? 'border-indigo-400 bg-indigo-500/10'
-                          : 'border-gray-600 hover:border-gray-500'
+                          : 'border-gray-300 hover:border-gray-500'
                       }`}
                     >
-                      <h3 className="font-semibold text-white mb-2">{career.name}</h3>
-                      <p className="text-sm text-gray-400">{career.description}</p>
+                      <h3 className="font-semibold text-gray-900 mb-2">{career.name}</h3>
+                      <p className="text-sm text-gray-600">{career.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Current Skill Level */}
-              <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
-                <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
                   <MdOutlineSchool className="text-indigo-400" size={24} />
                   <span>Current Skill Level</span>
                 </h2>
@@ -186,19 +186,19 @@ const RoadmapGenerator = () => {
                       className={`p-4 rounded-lg border cursor-pointer transition-all duration-200 ${
                         currentLevel === level.id
                           ? 'border-indigo-400 bg-indigo-500/10'
-                          : 'border-gray-600 hover:border-gray-500'
+                          : 'border-gray-300 hover:border-gray-500'
                       }`}
                     >
-                      <h3 className="font-semibold text-white mb-2">{level.name}</h3>
-                      <p className="text-sm text-gray-400">{level.description}</p>
+                      <h3 className="font-semibold text-gray-900 mb-2">{level.name}</h3>
+                      <p className="text-sm text-gray-600">{level.description}</p>
                     </div>
                   ))}
                 </div>
               </div>
 
               {/* Time Commitment */}
-              <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
-                <h2 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8">
+                <h2 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
                   <MdOutlineTimer className="text-indigo-400" size={24} />
                   <span>Weekly Time Commitment</span>
                 </h2>
@@ -210,11 +210,11 @@ const RoadmapGenerator = () => {
                       className={`p-4 rounded-lg border cursor-pointer transition-all duration-200 ${
                         timeCommitment === time.id
                           ? 'border-indigo-400 bg-indigo-500/10'
-                          : 'border-gray-600 hover:border-gray-500'
+                          : 'border-gray-300 hover:border-gray-500'
                       }`}
                     >
-                      <h3 className="font-semibold text-white mb-2">{time.name}</h3>
-                      <p className="text-sm text-gray-400">{time.description}</p>
+                      <h3 className="font-semibold text-gray-900 mb-2">{time.name}</h3>
+                      <p className="text-sm text-gray-600">{time.description}</p>
                     </div>
                   ))}
                 </div>
@@ -225,7 +225,7 @@ const RoadmapGenerator = () => {
                 <button
                   onClick={handleGenerateRoadmap}
                   disabled={!selectedCareer || !currentLevel || !timeCommitment || isGenerating}
-                  className="bg-indigo-500 text-white px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-600 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-300"
+                  className="bg-indigo-500 text-gray-900 px-8 py-4 rounded-full font-semibold text-lg hover:bg-indigo-600 disabled:bg-gray-600 disabled:cursor-not-allowed transition-colors duration-300"
                 >
                   {isGenerating ? 'Generating Your Roadmap...' : 'Generate Personalized Roadmap'}
                 </button>
@@ -235,10 +235,10 @@ const RoadmapGenerator = () => {
 
           {/* Loading State */}
           {isGenerating && (
-            <div className="bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700 text-center">
+            <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200 text-center">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-400 mx-auto mb-4"></div>
-              <h3 className="text-xl font-semibold text-white mb-2">Generating Your Career Roadmap</h3>
-              <p className="text-gray-400">Analyzing your preferences and creating a personalized learning path...</p>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Generating Your Career Roadmap</h3>
+              <p className="text-gray-600">Analyzing your preferences and creating a personalized learning path...</p>
             </div>
           )}
 
@@ -247,28 +247,28 @@ const RoadmapGenerator = () => {
             <>
               {/* Roadmap Overview */}
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+                <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
                   <div className="flex items-center space-x-2 mb-4">
                     <MdOutlineStars className="text-indigo-400" size={20} />
-                    <h3 className="text-xl font-semibold text-white">Career Path</h3>
+                    <h3 className="text-xl font-semibold text-gray-900">Career Path</h3>
                   </div>
-                  <p className="text-2xl font-bold text-white">{generatedRoadmap.title}</p>
+                  <p className="text-2xl font-bold text-gray-900">{generatedRoadmap.title}</p>
                 </div>
 
-                <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+                <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
                   <div className="flex items-center space-x-2 mb-4">
                     <MdOutlineTimer className="text-green-400" size={20} />
-                    <h3 className="text-xl font-semibold text-white">Duration</h3>
+                    <h3 className="text-xl font-semibold text-gray-900">Duration</h3>
                   </div>
-                  <p className="text-2xl font-bold text-white">{generatedRoadmap.duration}</p>
+                  <p className="text-2xl font-bold text-gray-900">{generatedRoadmap.duration}</p>
                 </div>
 
-                <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+                <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
                   <div className="flex items-center space-x-2 mb-4">
                     <FaBook className="text-blue-400" size={20} />
-                    <h3 className="text-xl font-semibold text-white">Total Phases</h3>
+                    <h3 className="text-xl font-semibold text-gray-900">Total Phases</h3>
                   </div>
-                  <p className="text-2xl font-bold text-white">{generatedRoadmap.phases.length}</p>
+                  <p className="text-2xl font-bold text-gray-900">{generatedRoadmap.phases.length}</p>
                 </div>
               </div>
 
@@ -277,17 +277,17 @@ const RoadmapGenerator = () => {
                 {generatedRoadmap.phases.map((phase, index) => (
                   <div
                     key={phase.id}
-                    className={`bg-gray-800 rounded-xl p-6 shadow-lg border-2 ${getPhaseColor(phase.status)}`}
+                    className={`bg-white rounded-xl p-6 shadow-lg border-2 ${getPhaseColor(phase.status)}`}
                   >
                     <div className="flex justify-between items-center mb-4">
                       <div className="flex items-center space-x-3">
                         {getPhaseIcon(phase.status)}
-                        <h3 className="text-xl font-semibold text-white">{phase.title}</h3>
-                        <span className="bg-gray-700 text-gray-300 px-3 py-1 rounded-full text-sm">
+                        <h3 className="text-xl font-semibold text-gray-900">{phase.title}</h3>
+                        <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">
                           {phase.duration}
                         </span>
                       </div>
-                      <div className="text-sm text-gray-400">
+                      <div className="text-sm text-gray-600">
                         Phase {index + 1} of {generatedRoadmap.phases.length}
                       </div>
                     </div>
@@ -296,19 +296,19 @@ const RoadmapGenerator = () => {
                       {phase.skills.map((skill, skillIndex) => (
                         <div
                           key={skillIndex}
-                          className="flex items-center justify-between p-3 bg-gray-700 rounded-lg"
+                          className="flex items-center justify-between p-3 bg-gray-100 rounded-lg"
                         >
                           <div className="flex items-center space-x-3">
                             {skill.completed ? (
                               <FaCheckCircle className="text-green-400" size={16} />
                             ) : (
-                              <FaCode className="text-gray-400" size={16} />
+                              <FaCode className="text-gray-600" size={16} />
                             )}
-                            <span className={skill.completed ? 'text-white' : 'text-gray-300'}>
+                            <span className={skill.completed ? 'text-gray-900' : 'text-gray-700'}>
                               {skill.name}
                             </span>
                           </div>
-                          <span className="text-sm text-gray-400">{skill.hours}h</span>
+                          <span className="text-sm text-gray-600">{skill.hours}h</span>
                         </div>
                       ))}
                     </div>
@@ -322,12 +322,12 @@ const RoadmapGenerator = () => {
                   <BiDownload size={18} />
                   <span>Download Roadmap</span>
                 </button>
-                <button className="flex-1 bg-gray-700 text-white py-3 px-6 rounded-full font-semibold hover:bg-gray-600 transition-colors duration-300">
+                <button className="flex-1 bg-gray-100 text-gray-900 py-3 px-6 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300">
                   Start Learning Path
                 </button>
                 <button 
                   onClick={handleResetRoadmap}
-                  className="flex-1 bg-gray-700 text-white py-3 px-6 rounded-full font-semibold hover:bg-gray-600 transition-colors duration-300"
+                  className="flex-1 bg-gray-100 text-gray-900 py-3 px-6 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300"
                 >
                   Generate New Roadmap
                 </button>

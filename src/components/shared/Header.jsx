@@ -15,7 +15,7 @@ const Header = () => {
       {/* Brand logo and text */}
       <div className="flex items-center space-x-2">
         <LuBrainCircuit size={40} color='#6260ec'/>
-        <Link to="/" className="text-xl sm:text-2xl font-bold text-gray-100">
+        <Link to="/" className="text-xl sm:text-2xl font-bold text-gray-900">
           AI Career Coach
         </Link>
       </div>
@@ -34,7 +34,7 @@ const Header = () => {
       {/* Hamburger menu button for mobile */}
       <button 
         id="menu-button" 
-        className="md:hidden text-gray-300 hover:text-white focus:outline-none z-50" 
+        className="md:hidden text-gray-600 hover:text-gray-900 focus:outline-none z-50" 
         onClick={toggleMenu}
         aria-label="Toggle menu"
       >
@@ -48,14 +48,14 @@ const Header = () => {
           onClick={toggleMenu} // Allows closing by clicking outside the menu
         >
           {/* Background overlay */}
-          <div className="absolute inset-0 bg-gray-900 bg-opacity-70"></div>
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
           
           {/* Menu content */}
-          <div className="relative w-80 ml-auto bg-gray-800 h-full p-6 shadow-2xl flex flex-col items-center">
+          <div className="relative w-80 ml-auto bg-white h-full p-6 shadow-2xl flex flex-col items-center">
             {/* Close button */}
             <button 
               onClick={toggleMenu} 
-              className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none"
+              className="absolute top-4 right-4 text-gray-900 hover:text-gray-600 focus:outline-none"
               aria-label="Close menu"
             >
               <FaTimes className="h-6 w-6" />

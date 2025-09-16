@@ -197,20 +197,20 @@ const JobRecommendations = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
               <FaUserTie className="text-indigo-400" size={32} />
-              <h1 className="text-3xl font-bold text-white">Job Recommendations</h1>
+              <h1 className="text-3xl font-bold text-gray-900">Job Recommendations</h1>
             </div>
             <div className="flex space-x-2">
-              <button className="flex items-center space-x-2 bg-gray-800 text-gray-400 px-4 py-2 rounded-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors">
+              <button className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors">
                 <BiBookmarkHeart size={18} />
                 <span className="hidden md:inline">Saved ({savedJobs.size})</span>
               </button>
-              <button className="flex items-center space-x-2 bg-gray-800 text-gray-400 px-4 py-2 rounded-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors">
+              <button className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors">
                 <BiRefresh size={18} />
                 <span className="hidden md:inline">Refresh</span>
               </button>
@@ -219,55 +219,55 @@ const JobRecommendations = () => {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <MdOutlineWorkOutline className="text-indigo-400" size={20} />
-                <h3 className="text-lg font-semibold text-white">Available Jobs</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Available Jobs</h3>
               </div>
-              <p className="text-3xl font-bold text-white">{jobsData.length}</p>
+              <p className="text-3xl font-bold text-gray-900">{jobsData.length}</p>
             </div>
 
-            <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <FaHeart className="text-red-400" size={20} />
-                <h3 className="text-lg font-semibold text-white">Saved Jobs</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Saved Jobs</h3>
               </div>
-              <p className="text-3xl font-bold text-white">{savedJobs.size}</p>
+              <p className="text-3xl font-bold text-gray-900">{savedJobs.size}</p>
             </div>
 
-            <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <MdOutlineLocationOn className="text-blue-400" size={20} />
-                <h3 className="text-lg font-semibold text-white">Remote Jobs</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Remote Jobs</h3>
               </div>
-              <p className="text-3xl font-bold text-white">
+              <p className="text-3xl font-bold text-gray-900">
                 {jobsData.filter(job => job.location.toLowerCase().includes('remote')).length}
               </p>
             </div>
 
-            <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
               <div className="flex items-center space-x-2 mb-2">
                 <MdOutlineAttachMoney className="text-green-400" size={20} />
-                <h3 className="text-lg font-semibold text-white">Avg Match</h3>
+                <h3 className="text-lg font-semibold text-gray-900">Avg Match</h3>
               </div>
-              <p className="text-3xl font-bold text-white">
+              <p className="text-3xl font-bold text-gray-900">
                 {Math.round(jobsData.reduce((acc, job) => acc + job.matchScore, 0) / jobsData.length)}%
               </p>
             </div>
           </div>
 
           {/* Search and Filters */}
-          <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 mb-8">
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8">
             <div className="flex flex-col lg:flex-row lg:items-center gap-4">
               {/* Search Bar */}
               <div className="flex-1 relative">
-                <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+                <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={20} />
                 <input
                   type="text"
                   placeholder="Search jobs, companies, or skills..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-gray-700 text-white pl-10 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600"
+                  className="w-full bg-gray-100 text-gray-900 pl-10 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300"
                 />
               </div>
 
@@ -278,7 +278,7 @@ const JobRecommendations = () => {
                     key={filterType}
                     value={selectedFilters[filterType]}
                     onChange={(e) => handleFilterChange(filterType, e.target.value)}
-                    className="bg-gray-700 text-white px-3 py-2 rounded-lg border border-gray-600 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    className="bg-gray-100 text-gray-900 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                   >
                     {options.map(option => (
                       <option key={option.value} value={option.value}>
@@ -293,11 +293,11 @@ const JobRecommendations = () => {
 
           {/* Job Results */}
           <div className="mb-4 flex items-center justify-between">
-            <p className="text-gray-400">
+            <p className="text-gray-600">
               Showing {filteredJobs.length} job{filteredJobs.length !== 1 ? 's' : ''} 
               {searchTerm && ` matching "${searchTerm}"`}
             </p>
-            <select className="bg-gray-800 text-white px-3 py-2 rounded-lg border border-gray-700 focus:outline-none">
+            <select className="bg-white text-gray-900 px-3 py-2 rounded-lg border border-gray-200 focus:outline-none">
               <option>Sort by Match</option>
               <option>Sort by Date</option>
               <option>Sort by Salary</option>
@@ -307,29 +307,29 @@ const JobRecommendations = () => {
           {/* Job Cards */}
           <div className="space-y-6">
             {filteredJobs.length === 0 ? (
-              <div className="bg-gray-800 rounded-xl p-8 shadow-lg border border-gray-700 text-center">
-                <FaUserTie className="mx-auto text-gray-400 mb-4" size={48} />
-                <h3 className="text-xl font-semibold text-white mb-2">No Jobs Found</h3>
-                <p className="text-gray-400">
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200 text-center">
+                <FaUserTie className="mx-auto text-gray-600 mb-4" size={48} />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">No Jobs Found</h3>
+                <p className="text-gray-600">
                   Try adjusting your search criteria or filters to find more opportunities.
                 </p>
               </div>
             ) : (
               filteredJobs.map((job) => (
-                <div key={job.id} className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700 hover:border-gray-600 transition-colors">
+                <div key={job.id} className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:border-gray-300 transition-colors">
                   <div className="flex items-start justify-between">
                     <div className="flex items-start space-x-4 flex-1">
                       <div className="text-4xl">{job.logo}</div>
                       
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-3 mb-2">
-                          <h3 className="text-xl font-semibold text-white">{job.title}</h3>
+                          <h3 className="text-xl font-semibold text-gray-900">{job.title}</h3>
                           <span className={`px-3 py-1 rounded-full text-sm font-medium ${getMatchBadgeColor(job.matchScore)}`}>
                             {job.matchScore}% match
                           </span>
                         </div>
                         
-                        <div className="flex items-center space-x-4 text-gray-400 text-sm mb-3">
+                        <div className="flex items-center space-x-4 text-gray-600 text-sm mb-3">
                           <div className="flex items-center space-x-1">
                             <FaBuilding size={14} />
                             <span>{job.company}</span>
@@ -348,7 +348,7 @@ const JobRecommendations = () => {
                           </div>
                         </div>
                         
-                        <p className="text-gray-300 mb-4">{job.description}</p>
+                        <p className="text-gray-700 mb-4">{job.description}</p>
                         
                         <div className="flex flex-wrap gap-2 mb-4">
                           {job.requirements.map((skill, index) => (
@@ -359,7 +359,7 @@ const JobRecommendations = () => {
                         </div>
                         
                         <div className="flex items-center justify-between">
-                          <div className="text-sm text-gray-400">
+                          <div className="text-sm text-gray-600">
                             {job.applicants} applicants
                           </div>
                           
@@ -368,8 +368,8 @@ const JobRecommendations = () => {
                               onClick={() => handleSaveJob(job.id)}
                               className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
                                 savedJobs.has(job.id)
-                                  ? 'bg-red-600 text-white hover:bg-red-700'
-                                  : 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                                  ? 'bg-red-600 text-gray-900 hover:bg-red-700'
+                                  : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                               }`}
                             >
                               <BiBookmark size={16} />
@@ -396,7 +396,7 @@ const JobRecommendations = () => {
           {/* Load More Button */}
           {filteredJobs.length > 0 && (
             <div className="text-center mt-8">
-              <button className="bg-gray-700 text-white px-8 py-3 rounded-full font-semibold hover:bg-gray-600 transition-colors duration-300">
+              <button className="bg-gray-100 text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300">
                 Load More Jobs
               </button>
             </div>

@@ -60,10 +60,10 @@ const SkillsGap = () => {
 
   const getPriorityColor = (priority) => {
     switch (priority.toLowerCase()) {
-      case 'high': return 'text-red-400 bg-red-900/20';
-      case 'medium': return 'text-yellow-400 bg-yellow-900/20';
-      case 'low': return 'text-green-400 bg-green-900/20';
-      default: return 'text-gray-400 bg-gray-900/20';
+      case 'high': return 'text-red-600 bg-red-100';
+      case 'medium': return 'text-yellow-600 bg-yellow-100';
+      case 'low': return 'text-green-600 bg-green-100';
+      default: return 'text-gray-600 bg-gray-100';
     }
   };
 
@@ -76,46 +76,46 @@ const SkillsGap = () => {
     : skillsData.filter(skill => skill.priority.toLowerCase() === selectedLevel);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="p-4 md:p-8">
         {/* Header Section */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Skills Gap Analysis</h1>
-          <p className="text-gray-400">Identify and bridge the gaps between your current skills and career requirements</p>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Skills Gap Analysis</h1>
+          <p className="text-gray-600">Identify and bridge the gaps between your current skills and career requirements</p>
         </div>
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
               <FaChartLine className="text-blue-400" size={24} />
               <span className="text-2xl font-bold">5</span>
             </div>
-            <p className="text-gray-400">Skills to Improve</p>
+            <p className="text-gray-600">Skills to Improve</p>
           </div>
 
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
               <MdTrendingUp className="text-red-400" size={24} />
               <span className="text-2xl font-bold">2</span>
             </div>
-            <p className="text-gray-400">High Priority</p>
+            <p className="text-gray-600">High Priority</p>
           </div>
 
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
               <FaClock className="text-yellow-400" size={24} />
               <span className="text-2xl font-bold">13</span>
             </div>
-            <p className="text-gray-400">Months to Complete</p>
+            <p className="text-gray-600">Months to Complete</p>
           </div>
 
-          <div className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+          <div className="bg-white rounded-xl p-6 border border-gray-200">
             <div className="flex items-center justify-between mb-4">
               <MdAssessment className="text-green-400" size={24} />
               <span className="text-2xl font-bold">72%</span>
             </div>
-            <p className="text-gray-400">Overall Progress</p>
+            <p className="text-gray-600">Overall Progress</p>
           </div>
         </div>
 
@@ -126,8 +126,8 @@ const SkillsGap = () => {
               onClick={() => setSelectedLevel('all')}
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedLevel === 'all'
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
+                  ? 'bg-indigo-600 text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 border border-gray-200'
               }`}
             >
               All Skills
@@ -136,8 +136,8 @@ const SkillsGap = () => {
               onClick={() => setSelectedLevel('high')}
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedLevel === 'high'
-                  ? 'bg-red-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
+                  ? 'bg-red-600 text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 border border-gray-200'
               }`}
             >
               High Priority
@@ -146,8 +146,8 @@ const SkillsGap = () => {
               onClick={() => setSelectedLevel('medium')}
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedLevel === 'medium'
-                  ? 'bg-yellow-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
+                  ? 'bg-yellow-600 text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 border border-gray-200'
               }`}
             >
               Medium Priority
@@ -156,8 +156,8 @@ const SkillsGap = () => {
               onClick={() => setSelectedLevel('low')}
               className={`px-4 py-2 rounded-lg transition-colors ${
                 selectedLevel === 'low'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-gray-800 text-gray-400 hover:text-white'
+                  ? 'bg-green-600 text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 border border-gray-200'
               }`}
             >
               Low Priority
@@ -168,19 +168,19 @@ const SkillsGap = () => {
         {/* Skills Gap Cards */}
         <div className="space-y-6">
           {filteredSkills.map((skill) => (
-            <div key={skill.id} className="bg-gray-800 rounded-xl p-6 border border-gray-700">
+            <div key={skill.id} className="bg-white rounded-xl p-6 border border-gray-200">
               <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-semibold text-white">{skill.name}</h3>
+                    <h3 className="text-xl font-semibold text-gray-900">{skill.name}</h3>
                     <span className={`px-3 py-1 rounded-full text-xs font-medium ${getPriorityColor(skill.priority)}`}>
                       {skill.priority} Priority
                     </span>
-                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-700 text-gray-300">
+                    <span className="px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-700">
                       {skill.category}
                     </span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-gray-400">
+                  <div className="flex items-center gap-4 text-sm text-gray-600">
                     <span>Current: {skill.currentLevel}%</span>
                     <span>Required: {skill.requiredLevel}%</span>
                     <span>Gap: {getGapPercentage(skill.currentLevel, skill.requiredLevel)}%</span>
@@ -194,18 +194,18 @@ const SkillsGap = () => {
 
               {/* Progress Bar */}
               <div className="mb-4">
-                <div className="flex justify-between text-sm text-gray-400 mb-2">
+                <div className="flex justify-between text-sm text-gray-600 mb-2">
                   <span>Progress</span>
                   <span>{skill.currentLevel}% of {skill.requiredLevel}%</span>
                 </div>
-                <div className="w-full bg-gray-700 rounded-full h-3">
+                <div className="w-full bg-gray-200 rounded-full h-3">
                   <div className="relative h-3 rounded-full">
                     <div
                       className="bg-indigo-600 h-3 rounded-full transition-all duration-500"
                       style={{ width: `${(skill.currentLevel / skill.requiredLevel) * 100}%` }}
                     ></div>
                     <div
-                      className="absolute top-0 bg-gray-600 h-3 rounded-r-full"
+                      className="absolute top-0 bg-gray-300 h-3 rounded-r-full"
                       style={{
                         left: `${(skill.currentLevel / skill.requiredLevel) * 100}%`,
                         width: `${((skill.requiredLevel - skill.currentLevel) / skill.requiredLevel) * 100}%`
@@ -217,13 +217,13 @@ const SkillsGap = () => {
 
               {/* Recommendations */}
               <div>
-                <h4 className="text-sm font-medium text-white mb-2 flex items-center gap-2">
+                <h4 className="text-sm font-medium text-gray-900 mb-2 flex items-center gap-2">
                   <FaLightbulb className="text-yellow-400" size={14} />
                   Recommended Actions
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {skill.recommendations.map((rec, index) => (
-                    <div key={index} className="flex items-center gap-2 text-sm text-gray-400 bg-gray-700/50 rounded-lg p-3">
+                    <div key={index} className="flex items-center gap-2 text-sm text-gray-600 bg-gray-100 rounded-lg p-3">
                       <FaBookOpen size={12} className="text-indigo-400 flex-shrink-0" />
                       <span>{rec}</span>
                     </div>
@@ -236,7 +236,7 @@ const SkillsGap = () => {
 
         {filteredSkills.length === 0 && (
           <div className="text-center py-12">
-            <p className="text-gray-400">No skills found for the selected priority level.</p>
+            <p className="text-gray-600">No skills found for the selected priority level.</p>
           </div>
         )}
       </div>

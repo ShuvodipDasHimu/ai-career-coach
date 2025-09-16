@@ -93,13 +93,13 @@ const Settings = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-gray-50 text-gray-900">
       <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
               <MdOutlineSettings className="text-indigo-400" size={32} />
-              <h1 className="text-3xl font-bold text-white">Admin & Settings</h1>
+              <h1 className="text-3xl font-bold text-gray-900">Admin & Settings</h1>
             </div>
             <div className="flex space-x-2">
               <button 
@@ -111,7 +111,7 @@ const Settings = () => {
               </button>
               <button 
                 onClick={handleResetSettings}
-                className="flex items-center space-x-2 bg-gray-800 text-gray-400 px-4 py-2 rounded-lg border border-gray-700 hover:bg-gray-700 hover:text-white transition-colors"
+                className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors"
               >
                 <BiRefresh size={18} />
                 <span className="hidden md:inline">Reset</span>
@@ -122,8 +122,8 @@ const Settings = () => {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
             {/* Settings Navigation */}
             <div className="lg:col-span-1">
-              <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
-                <h2 className="text-lg font-semibold text-white mb-4">Settings</h2>
+              <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">Settings</h2>
                 <nav className="space-y-2">
                   {tabOptions.map((tab) => (
                     <button
@@ -131,8 +131,8 @@ const Settings = () => {
                       onClick={() => setActiveTab(tab.id)}
                       className={`w-full flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors duration-200 ${
                         activeTab === tab.id
-                          ? 'bg-indigo-500 text-white'
-                          : 'text-gray-400 hover:bg-gray-700 hover:text-white'
+                          ? 'bg-indigo-500 text-gray-900'
+                          : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                       }`}
                     >
                       <tab.icon size={18} />
@@ -148,26 +148,26 @@ const Settings = () => {
               {/* Profile Settings */}
               {activeTab === 'profile' && (
                 <div className="space-y-6">
-                  <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
-                    <h3 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
                       <FaUser className="text-indigo-400" size={20} />
                       <span>Personal Information</span>
                     </h3>
                     
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-400 mb-2">First Name</label>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">First Name</label>
                         <div className="flex items-center space-x-2">
                           <input
                             type="text"
                             value={profileData.firstName}
                             onChange={(e) => handleInputChange('profile', 'firstName', e.target.value)}
                             disabled={!isEditing.firstName}
-                            className="flex-1 bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600 disabled:opacity-60"
+                            className="flex-1 bg-gray-100 text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300 disabled:opacity-60"
                           />
                           <button
                             onClick={() => handleEditToggle('firstName')}
-                            className="text-gray-400 hover:text-white"
+                            className="text-gray-600 hover:text-gray-900"
                           >
                             <BiEdit size={18} />
                           </button>
@@ -175,18 +175,18 @@ const Settings = () => {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-400 mb-2">Last Name</label>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">Last Name</label>
                         <div className="flex items-center space-x-2">
                           <input
                             type="text"
                             value={profileData.lastName}
                             onChange={(e) => handleInputChange('profile', 'lastName', e.target.value)}
                             disabled={!isEditing.lastName}
-                            className="flex-1 bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600 disabled:opacity-60"
+                            className="flex-1 bg-gray-100 text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300 disabled:opacity-60"
                           />
                           <button
                             onClick={() => handleEditToggle('lastName')}
-                            className="text-gray-400 hover:text-white"
+                            className="text-gray-600 hover:text-gray-900"
                           >
                             <BiEdit size={18} />
                           </button>
@@ -194,18 +194,18 @@ const Settings = () => {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">Email</label>
                         <div className="flex items-center space-x-2">
                           <input
                             type="email"
                             value={profileData.email}
                             onChange={(e) => handleInputChange('profile', 'email', e.target.value)}
                             disabled={!isEditing.email}
-                            className="flex-1 bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600 disabled:opacity-60"
+                            className="flex-1 bg-gray-100 text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300 disabled:opacity-60"
                           />
                           <button
                             onClick={() => handleEditToggle('email')}
-                            className="text-gray-400 hover:text-white"
+                            className="text-gray-600 hover:text-gray-900"
                           >
                             <BiEdit size={18} />
                           </button>
@@ -213,18 +213,18 @@ const Settings = () => {
                       </div>
 
                       <div>
-                        <label className="block text-sm font-medium text-gray-400 mb-2">Phone</label>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">Phone</label>
                         <div className="flex items-center space-x-2">
                           <input
                             type="tel"
                             value={profileData.phone}
                             onChange={(e) => handleInputChange('profile', 'phone', e.target.value)}
                             disabled={!isEditing.phone}
-                            className="flex-1 bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600 disabled:opacity-60"
+                            className="flex-1 bg-gray-100 text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300 disabled:opacity-60"
                           />
                           <button
                             onClick={() => handleEditToggle('phone')}
-                            className="text-gray-400 hover:text-white"
+                            className="text-gray-600 hover:text-gray-900"
                           >
                             <BiEdit size={18} />
                           </button>
@@ -232,18 +232,18 @@ const Settings = () => {
                       </div>
 
                       <div className="md:col-span-2">
-                        <label className="block text-sm font-medium text-gray-400 mb-2">Bio</label>
+                        <label className="block text-sm font-medium text-gray-600 mb-2">Bio</label>
                         <div className="flex items-start space-x-2">
                           <textarea
                             value={profileData.bio}
                             onChange={(e) => handleInputChange('profile', 'bio', e.target.value)}
                             disabled={!isEditing.bio}
                             rows="3"
-                            className="flex-1 bg-gray-700 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-600 disabled:opacity-60 resize-none"
+                            className="flex-1 bg-gray-100 text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300 disabled:opacity-60 resize-none"
                           />
                           <button
                             onClick={() => handleEditToggle('bio')}
-                            className="text-gray-400 hover:text-white mt-2"
+                            className="text-gray-600 hover:text-gray-900 mt-2"
                           >
                             <BiEdit size={18} />
                           </button>
@@ -257,20 +257,20 @@ const Settings = () => {
               {/* Notification Settings */}
               {activeTab === 'notifications' && (
                 <div className="space-y-6">
-                  <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
-                    <h3 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
                       <FaBell className="text-indigo-400" size={20} />
                       <span>Notification Preferences</span>
                     </h3>
                     
                     <div className="space-y-4">
                       {Object.entries(notifications).map(([key, value]) => (
-                        <div key={key} className="flex items-center justify-between p-4 bg-gray-700 rounded-lg">
+                        <div key={key} className="flex items-center justify-between p-4 bg-gray-100 rounded-lg">
                           <div>
-                            <h4 className="font-medium text-white capitalize">
+                            <h4 className="font-medium text-gray-900 capitalize">
                               {key.replace(/([A-Z])/g, ' $1').trim()}
                             </h4>
-                            <p className="text-sm text-gray-400 mt-1">
+                            <p className="text-sm text-gray-600 mt-1">
                               {getNotificationDescription(key)}
                             </p>
                           </div>
@@ -293,45 +293,45 @@ const Settings = () => {
               {/* Security Settings */}
               {activeTab === 'security' && (
                 <div className="space-y-6">
-                  <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
-                    <h3 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
                       <FaLock className="text-indigo-400" size={20} />
                       <span>Security Settings</span>
                     </h3>
                     
                     <div className="space-y-6">
-                      <div className="p-4 bg-gray-700 rounded-lg">
-                        <h4 className="font-medium text-white mb-2">Change Password</h4>
+                      <div className="p-4 bg-gray-100 rounded-lg">
+                        <h4 className="font-medium text-gray-900 mb-2">Change Password</h4>
                         <div className="space-y-3">
                           <div>
-                            <label className="block text-sm text-gray-400 mb-1">Current Password</label>
+                            <label className="block text-sm text-gray-600 mb-1">Current Password</label>
                             <div className="relative">
                               <input
                                 type={showPassword ? "text" : "password"}
-                                className="w-full bg-gray-600 text-white rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                                className="w-full bg-gray-600 text-gray-900 rounded-lg px-4 py-2 pr-10 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                                 placeholder="Enter current password"
                               />
                               <button
                                 onClick={() => setShowPassword(!showPassword)}
-                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-white"
+                                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:text-gray-900"
                               >
                                 {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
                               </button>
                             </div>
                           </div>
                           <div>
-                            <label className="block text-sm text-gray-400 mb-1">New Password</label>
+                            <label className="block text-sm text-gray-600 mb-1">New Password</label>
                             <input
                               type="password"
-                              className="w-full bg-gray-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                              className="w-full bg-gray-600 text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                               placeholder="Enter new password"
                             />
                           </div>
                           <div>
-                            <label className="block text-sm text-gray-400 mb-1">Confirm New Password</label>
+                            <label className="block text-sm text-gray-600 mb-1">Confirm New Password</label>
                             <input
                               type="password"
-                              className="w-full bg-gray-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                              className="w-full bg-gray-600 text-gray-900 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-400"
                               placeholder="Confirm new password"
                             />
                           </div>
@@ -341,11 +341,11 @@ const Settings = () => {
                         </div>
                       </div>
 
-                      <div className="p-4 bg-gray-700 rounded-lg">
+                      <div className="p-4 bg-gray-100 rounded-lg">
                         <div className="flex items-center justify-between">
                           <div>
-                            <h4 className="font-medium text-white">Two-Factor Authentication</h4>
-                            <p className="text-sm text-gray-400 mt-1">Add an extra layer of security to your account</p>
+                            <h4 className="font-medium text-gray-900">Two-Factor Authentication</h4>
+                            <p className="text-sm text-gray-600 mt-1">Add an extra layer of security to your account</p>
                           </div>
                           <label className="relative inline-flex items-center cursor-pointer">
                             <input
@@ -366,16 +366,16 @@ const Settings = () => {
               {/* Privacy & Data Settings */}
               {activeTab === 'privacy' && (
                 <div className="space-y-6">
-                  <div className="bg-gray-800 rounded-xl p-6 shadow-lg border border-gray-700">
-                    <h3 className="text-xl font-semibold text-white mb-4 flex items-center space-x-2">
+                  <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-4 flex items-center space-x-2">
                       <FaDatabase className="text-indigo-400" size={20} />
                       <span>Privacy & Data Management</span>
                     </h3>
                     
                     <div className="space-y-6">
-                      <div className="p-4 bg-gray-700 rounded-lg">
-                        <h4 className="font-medium text-white mb-4">Data Export & Download</h4>
-                        <p className="text-gray-400 text-sm mb-4">Download a copy of all your data including profile information, analysis history, and generated roadmaps.</p>
+                      <div className="p-4 bg-gray-100 rounded-lg">
+                        <h4 className="font-medium text-gray-900 mb-4">Data Export & Download</h4>
+                        <p className="text-gray-600 text-sm mb-4">Download a copy of all your data including profile information, analysis history, and generated roadmaps.</p>
                         <button 
                           onClick={handleExportData}
                           className="flex items-center space-x-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
@@ -385,8 +385,8 @@ const Settings = () => {
                         </button>
                       </div>
 
-                      <div className="p-4 bg-gray-700 rounded-lg">
-                        <h4 className="font-medium text-white mb-4">Profile Visibility</h4>
+                      <div className="p-4 bg-gray-100 rounded-lg">
+                        <h4 className="font-medium text-gray-900 mb-4">Profile Visibility</h4>
                         <div className="space-y-2">
                           <label className="flex items-center space-x-3">
                             <input
@@ -398,8 +398,8 @@ const Settings = () => {
                               className="form-radio text-indigo-400"
                             />
                             <div>
-                              <span className="text-white">Public</span>
-                              <p className="text-sm text-gray-400">Your profile is visible to everyone</p>
+                              <span className="text-gray-900">Public</span>
+                              <p className="text-sm text-gray-600">Your profile is visible to everyone</p>
                             </div>
                           </label>
                           <label className="flex items-center space-x-3">
@@ -412,19 +412,19 @@ const Settings = () => {
                               className="form-radio text-indigo-400"
                             />
                             <div>
-                              <span className="text-white">Private</span>
-                              <p className="text-sm text-gray-400">Only you can see your profile</p>
+                              <span className="text-gray-900">Private</span>
+                              <p className="text-sm text-gray-600">Only you can see your profile</p>
                             </div>
                           </label>
                         </div>
                       </div>
 
                       <div className="p-4 bg-red-900/20 border border-red-700 rounded-lg">
-                        <h4 className="font-medium text-white mb-2 flex items-center space-x-2">
+                        <h4 className="font-medium text-gray-900 mb-2 flex items-center space-x-2">
                           <BiTrash className="text-red-400" size={18} />
                           <span>Delete Account</span>
                         </h4>
-                        <p className="text-gray-400 text-sm mb-4">
+                        <p className="text-gray-600 text-sm mb-4">
                           Permanently delete your account and all associated data. This action cannot be undone.
                         </p>
                         <button 
