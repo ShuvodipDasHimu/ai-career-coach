@@ -6,7 +6,7 @@ const Register = () => {
   return (
     <main className="flex flex-col items-center justify-center min-h-screen p-4">
       {/* Container for the registration card */}
-      <div className="w-full max-w-sm p-8 rounded-lg shadow-lg bg-white border border-gray-200 animate-fade-in-up transition-all duration-500">
+      <div className="w-full max-w-sm p-8 rounded-xl shadow-2xl bg-white/95 backdrop-blur-sm border border-white/20 animate-fade-in-up transition-all duration-500">
         <h2 className="text-3xl font-bold text-center mb-6 text-gray-900">Create an Account</h2>
         
         {/* Registration form */}
@@ -78,7 +78,7 @@ const Register = () => {
         {/* Login link */}
         <p className="mt-6 text-center text-sm text-gray-600">
           Already have an account? 
-          <Link to="/login" className="font-medium text-indigo-400 hover:text-indigo-300 hover:scale-105 transition-all duration-200 ml-1">Log In</Link>
+          <Link to="/auth/login" className="font-medium text-indigo-400 hover:text-indigo-300 hover:scale-105 transition-all duration-200 ml-1">Log In</Link>
         </p>
       </div>
     </main>

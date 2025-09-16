@@ -22,19 +22,20 @@ import ErrorPage from "../pages/ErrorPage"
 const router = createBrowserRouter([
   {
     path: "/",
+    Component: HomePage,
+    errorElement: <ErrorPage/>,
+  },
+  {
+    path: "/auth",
     Component: AuthLayout,
     errorElement: <ErrorPage/>,
     children: [
       {
-        path: "",
-        Component: HomePage,
-      },
-      {
-        path:"/register",
+        path: "register",
         Component: Register
       },
       {
-        path:"/login",
+        path: "login",
         Component: Login
       },
     ],

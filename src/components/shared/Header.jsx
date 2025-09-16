@@ -21,12 +21,12 @@ const Header = () => {
       </div>
 
       {/* Desktop navigation and buttons (visible on md screens and up) */}
-      <div className="hidden md:flex items-center space-x-4">
+      <div className="hidden md:flex items-center space-x-6">
         {/* Additional links can go here */}
-        <Link to="/register" className="px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-indigo-500/25 hover:bg-indigo-600">
+        <Link to="/auth/register" className="px-6 py-3 text-base font-semibold text-white bg-indigo-500 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-indigo-500/25 hover:bg-indigo-600">
           Sign Up
         </Link>
-        <Link to="/login" className="px-4 py-2 text-sm font-medium text-indigo-400 border border-indigo-400 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-indigo-400 hover:text-white hover:shadow-md">
+        <Link to="/auth/login" className="px-6 py-3 text-base font-semibold text-indigo-400 border-2 border-indigo-400 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-indigo-400 hover:text-white hover:shadow-md">
           Login
         </Link>
       </div>
@@ -63,10 +63,10 @@ const Header = () => {
 
             {/* Mobile navigation links */}
             <nav className="flex flex-col items-center py-4 space-y-4 w-full mt-10">
-              <Link to="/login" className="w-full px-4 py-2 text-sm font-medium text-indigo-400 border border-indigo-400 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-indigo-400 hover:text-white hover:shadow-md text-center">
+              <Link to="/auth/login" className="w-full px-4 py-2 text-sm font-medium text-indigo-400 border border-indigo-400 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-indigo-400 hover:text-white hover:shadow-md text-center">
                 Login
               </Link>
-              <Link to="/register" className="w-full px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-indigo-500/25 hover:bg-indigo-600 text-center">
+              <Link to="/auth/register" className="w-full px-4 py-2 text-sm font-medium text-white bg-indigo-500 rounded-full transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-indigo-500/25 hover:bg-indigo-600 text-center">
                 Sign Up
               </Link>
             </nav>
