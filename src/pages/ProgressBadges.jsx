@@ -179,8 +179,8 @@ const ProgressBadges = () => {
           {/* Header Section */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8">
             <div>
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">Progress & Badges</h1>
-              <p className="text-gray-600">Track your learning journey and celebrate achievements</p>
+              <h1 className="text-3xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-indigo-600">Progress & Badges</h1>
+              <p className="text-gray-600 transition-colors duration-200 hover:text-gray-700">Track your learning journey and celebrate achievements</p>
             </div>
             <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 hover:scale-105 hover:shadow-lg px-4 py-2 rounded-lg transition-all duration-200 mt-4 lg:mt-0">
               <BiRefresh size={16} />

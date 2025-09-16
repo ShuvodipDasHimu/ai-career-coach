@@ -202,7 +202,7 @@ const MyHistory = () => {
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
               <MdOutlineHistory className="text-indigo-400 hover:scale-110 transition-transform duration-200" size={32} />
-              <h1 className="text-3xl font-bold text-gray-900">My History</h1>
+              <h1 className="text-3xl font-bold text-gray-900 transition-colors duration-300 hover:text-indigo-600">My History</h1>
             </div>
             <div className="flex space-x-2">
               <button

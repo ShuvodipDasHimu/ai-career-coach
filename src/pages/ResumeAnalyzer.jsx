@@ -72,7 +72,7 @@ const ResumeAnalyzer = () => {
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
               <MdOutlineAnalytics className="text-indigo-400" size={32} />
-              <h1 className="text-3xl font-bold text-gray-900">Resume Analyzer</h1>
+              <h1 className="text-3xl font-bold text-gray-900 transition-colors duration-300 hover:text-indigo-600">Resume Analyzer</h1>
             </div>
             <button 
               onClick={handleResetAnalysis}
