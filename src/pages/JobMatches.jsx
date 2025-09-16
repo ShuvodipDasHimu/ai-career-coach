@@ -137,90 +137,90 @@ const JobMatches = () => {
         {/* Header Section */}
         <div className="flex flex-col lg:flex-row lg:items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">Job Matches</h1>
-            <p className="text-gray-600">AI-powered job recommendations tailored to your profile</p>
+            <h1 className="text-3xl font-bold text-gray-900 mb-2 transition-colors duration-300 hover:text-indigo-600">Job Matches</h1>
+            <p className="text-gray-600 transition-colors duration-200 hover:text-gray-700">AI-powered job recommendations tailored to your profile</p>
           </div>
-          <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors mt-4 lg:mt-0">
-            <BiRefresh size={16} />
+          <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-indigo-500/25 mt-4 lg:mt-0 text-white">
+            <BiRefresh size={16} className="transition-transform duration-200 hover:rotate-180" />
             Refresh Matches
           </button>
         </div>
 
         {/* Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
+          <div className="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:-translate-y-1 group">
             <div className="flex items-center justify-between mb-4">
-              <MdWork className="text-indigo-600" size={24} />
-              <span className="text-2xl font-bold">{jobMatches.length}</span>
+              <MdWork className="text-indigo-600 transition-all duration-200 transform group-hover:scale-110 group-hover:rotate-12" size={24} />
+              <span className="text-2xl font-bold transition-colors duration-300 group-hover:text-indigo-600">{jobMatches.length}</span>
             </div>
-            <p className="text-gray-600">Total Matches</p>
+            <p className="text-gray-600 transition-colors duration-200 group-hover:text-gray-700">Total Matches</p>
           </div>
 
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
+          <div className="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:-translate-y-1 group">
             <div className="flex items-center justify-between mb-4">
-              <MdTrendingUp className="text-green-600" size={24} />
-              <span className="text-2xl font-bold">{jobMatches.filter(job => job.matchScore >= 85).length}</span>
+              <MdTrendingUp className="text-green-600 transition-all duration-200 transform group-hover:scale-110 group-hover:rotate-12" size={24} />
+              <span className="text-2xl font-bold transition-colors duration-300 group-hover:text-green-600">{jobMatches.filter(job => job.matchScore >= 85).length}</span>
             </div>
-            <p className="text-gray-600">High Match</p>
+            <p className="text-gray-600 transition-colors duration-200 group-hover:text-gray-700">High Match</p>
           </div>
 
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
+          <div className="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:-translate-y-1 group">
             <div className="flex items-center justify-between mb-4">
-              <FaHeart className="text-pink-600" size={24} />
-              <span className="text-2xl font-bold">{savedJobs.size}</span>
+              <FaHeart className="text-pink-600 transition-all duration-200 transform group-hover:scale-110 group-hover:rotate-12" size={24} />
+              <span className="text-2xl font-bold transition-colors duration-300 group-hover:text-pink-600">{savedJobs.size}</span>
             </div>
-            <p className="text-gray-600">Saved Jobs</p>
+            <p className="text-gray-600 transition-colors duration-200 group-hover:text-gray-700">Saved Jobs</p>
           </div>
 
-          <div className="bg-white rounded-xl p-6 border border-gray-200">
+          <div className="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-lg hover:-translate-y-1 group">
             <div className="flex items-center justify-between mb-4">
-              <FaClock className="text-yellow-600" size={24} />
-              <span className="text-2xl font-bold">3</span>
+              <FaClock className="text-yellow-600 transition-all duration-200 transform group-hover:scale-110 group-hover:rotate-12" size={24} />
+              <span className="text-2xl font-bold transition-colors duration-300 group-hover:text-yellow-600">3</span>
             </div>
-            <p className="text-gray-600">Applied Today</p>
+            <p className="text-gray-600 transition-colors duration-200 group-hover:text-gray-700">Applied Today</p>
           </div>
         </div>
 
         {/* Filter Options */}
         <div className="flex items-center gap-4 mb-6">
-          <MdFilterList className="text-gray-600" size={20} />
+          <MdFilterList className="text-gray-600 transition-transform duration-200 hover:rotate-12" size={20} />
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setSelectedFilter('all')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-md ${
                 selectedFilter === 'all'
-                  ? 'bg-indigo-600 text-white'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/25'
+                  : 'bg-white text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-indigo-300'
               }`}
             >
               All Jobs
             </button>
             <button
               onClick={() => setSelectedFilter('high-match')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-md ${
                 selectedFilter === 'high-match'
-                  ? 'bg-green-600 text-white'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  ? 'bg-green-600 text-white shadow-lg shadow-green-500/25'
+                  : 'bg-white text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-green-300'
               }`}
             >
               High Match (85%+)
             </button>
             <button
               onClick={() => setSelectedFilter('remote')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-md ${
                 selectedFilter === 'remote'
-                  ? 'bg-blue-600 text-white'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                  : 'bg-white text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-blue-300'
               }`}
             >
               Remote Jobs
             </button>
             <button
               onClick={() => setSelectedFilter('saved')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-md ${
                 selectedFilter === 'saved'
-                  ? 'bg-pink-600 text-white'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  ? 'bg-pink-600 text-white shadow-lg shadow-pink-500/25'
+                  : 'bg-white text-gray-600 hover:text-gray-900 border border-gray-200 hover:border-pink-300'
               }`}
             >
               Saved Jobs
@@ -231,50 +231,50 @@ const JobMatches = () => {
         {/* Job Cards */}
         <div className="space-y-6">
           {filteredJobs.map((job) => (
-            <div key={job.id} className="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-all duration-200">
+            <div key={job.id} className="bg-white rounded-xl p-6 border border-gray-200 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1 hover:border-indigo-300 group">
               <div className="flex flex-col lg:flex-row lg:items-start justify-between">
                 <div className="flex-1">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="text-3xl">{job.logo}</div>
+                    <div className="text-3xl transition-transform duration-200 group-hover:scale-110">{job.logo}</div>
                     <div className="flex-1">
                       <div className="flex flex-col lg:flex-row lg:items-center gap-3 mb-2">
-                        <h3 className="text-xl font-semibold text-gray-900">{job.title}</h3>
-                        <span className={`px-3 py-1 rounded-full text-xs font-bold ${getMatchColor(job.matchScore)}`}>
+                        <h3 className="text-xl font-semibold text-gray-900 transition-colors duration-200 group-hover:text-indigo-600">{job.title}</h3>
+                        <span className={`px-3 py-1 rounded-full text-xs font-bold transition-all duration-200 transform group-hover:scale-105 ${getMatchColor(job.matchScore)}`}>
                           {job.matchScore}% Match
                         </span>
                         {job.remote && (
-                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700">
+                          <span className="px-3 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-700 transition-all duration-200 transform group-hover:scale-105 group-hover:bg-blue-200">
                             Remote
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-4 text-gray-600 mb-3">
+                      <div className="flex items-center gap-4 text-gray-600 mb-3 group-hover:text-gray-700 transition-colors duration-200">
                         <span className="flex items-center gap-1">
-                          <FaBuilding size={12} />
+                          <FaBuilding size={12} className="transition-transform duration-200 group-hover:scale-110" />
                           {job.company}
                         </span>
                         <span className="flex items-center gap-1">
-                          <FaMapMarkerAlt size={12} />
+                          <FaMapMarkerAlt size={12} className="transition-transform duration-200 group-hover:scale-110" />
                           {job.location}
                         </span>
                         <span className="flex items-center gap-1">
-                          <FaDollarSign size={12} />
+                          <FaDollarSign size={12} className="transition-transform duration-200 group-hover:scale-110" />
                           {job.salary}
                         </span>
                         <span className="text-sm">{job.postedDate}</span>
                       </div>
-                      <p className="text-gray-700 mb-4">{job.description}</p>
+                      <p className="text-gray-700 mb-4 group-hover:text-gray-800 transition-colors duration-200">{job.description}</p>
                     </div>
                   </div>
 
                   {/* Skills */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">Required Skills</h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors duration-200">Required Skills</h4>
                     <div className="flex flex-wrap gap-2">
                       {job.skills.map((skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm"
+                          className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-sm transition-all duration-200 transform hover:scale-105 hover:bg-indigo-200 hover:shadow-md cursor-default"
                         >
                           {skill}
                         </span>
@@ -284,22 +284,22 @@ const JobMatches = () => {
 
                   {/* Requirements */}
                   <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">Key Requirements</h4>
-                    <ul className="list-disc list-inside text-gray-600 text-sm space-y-1">
+                    <h4 className="text-sm font-medium text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors duration-200">Key Requirements</h4>
+                    <ul className="list-disc list-inside text-gray-600 text-sm space-y-1 group-hover:text-gray-700 transition-colors duration-200">
                       {job.requirements.map((req, index) => (
-                        <li key={index}>{req}</li>
+                        <li key={index} className="transition-all duration-200 hover:text-gray-800">{req}</li>
                       ))}
                     </ul>
                   </div>
 
                   {/* Benefits */}
                   <div className="mb-6">
-                    <h4 className="text-sm font-medium text-gray-900 mb-2">Benefits</h4>
+                    <h4 className="text-sm font-medium text-gray-900 mb-2 group-hover:text-indigo-600 transition-colors duration-200">Benefits</h4>
                     <div className="flex flex-wrap gap-2">
                       {job.benefits.map((benefit, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm"
+                          className="px-3 py-1 bg-gray-100 text-gray-700 rounded-full text-sm transition-all duration-200 transform hover:scale-105 hover:bg-green-100 hover:text-green-700 hover:shadow-md cursor-default"
                         >
                           {benefit}
                         </span>
@@ -312,20 +312,20 @@ const JobMatches = () => {
                 <div className="flex flex-col gap-3 mt-4 lg:mt-0 lg:ml-6">
                   <button
                     onClick={() => toggleSaveJob(job.id)}
-                    className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                    className={`flex items-center justify-center gap-2 px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-md ${
                       savedJobs.has(job.id)
-                        ? 'bg-pink-600 text-white hover:bg-pink-700'
+                        ? 'bg-pink-600 text-white hover:bg-pink-700 shadow-lg shadow-pink-500/25'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                     }`}
                   >
-                    {savedJobs.has(job.id) ? <FaHeartBroken size={14} /> : <FaHeart size={14} />}
+                    {savedJobs.has(job.id) ? <FaHeartBroken size={14} className="transition-transform duration-200 hover:scale-110" /> : <FaHeart size={14} className="transition-transform duration-200 hover:scale-110" />}
                     {savedJobs.has(job.id) ? 'Unsave' : 'Save'}
                   </button>
-                  <button className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors">
-                    <FaExternalLinkAlt size={14} />
+                  <button className="flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-lg hover:shadow-indigo-500/25">
+                    <FaExternalLinkAlt size={14} className="transition-transform duration-200 hover:scale-110" />
                     Apply Now
                   </button>
-                  <button className="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg transition-colors">
+                  <button className="flex items-center justify-center gap-2 bg-gray-100 hover:bg-gray-200 text-gray-900 px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-md">
                     View Details
                   </button>
                 </div>

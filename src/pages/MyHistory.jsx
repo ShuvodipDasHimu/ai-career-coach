@@ -7,6 +7,41 @@ const MyHistory = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Add CSS keyframes for staggered animations
+  React.useEffect(() => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .animate-pulse-hover:hover {
+        animation: pulse 0.6s ease-in-out;
+      }
+    `;
+    document.head.appendChild(style);
+
+    return () => {
+      document.head.removeChild(style);
+    };
+  }, []);
+
   // Sample history data
   const historyData = [
     {
@@ -107,26 +142,26 @@ const MyHistory = () => {
   const getTypeIcon = (type) => {
     switch (type) {
       case 'resume':
-        return <FaFileAlt className="text-blue-400" size={20} />;
+        return <FaFileAlt className="text-blue-400 hover:text-blue-500 hover:scale-110 transition-all duration-200" size={20} />;
       case 'roadmap':
-        return <FaRoad className="text-green-400" size={20} />;
+        return <FaRoad className="text-green-400 hover:text-green-500 hover:scale-110 transition-all duration-200" size={20} />;
       case 'chat':
-        return <FaComments className="text-indigo-400" size={20} />;
+        return <FaComments className="text-indigo-400 hover:text-indigo-500 hover:scale-110 transition-all duration-200" size={20} />;
       default:
-        return <MdOutlineHistory className="text-gray-600" size={20} />;
+        return <MdOutlineHistory className="text-gray-600 hover:text-gray-700 hover:scale-110 transition-all duration-200" size={20} />;
     }
   };
 
   const getStatusColor = (status) => {
     switch (status) {
       case 'completed':
-        return 'text-green-400 bg-green-400/10';
+        return 'text-green-500 bg-green-400/10 hover:bg-green-400/20 hover:text-green-600';
       case 'in-progress':
-        return 'text-yellow-400 bg-yellow-400/10';
+        return 'text-yellow-500 bg-yellow-400/10 hover:bg-yellow-400/20 hover:text-yellow-600';
       case 'failed':
-        return 'text-red-400 bg-red-400/10';
+        return 'text-red-500 bg-red-400/10 hover:bg-red-400/20 hover:text-red-600';
       default:
-        return 'text-gray-600 bg-gray-400/10';
+        return 'text-gray-600 bg-gray-400/10 hover:bg-gray-400/20 hover:text-gray-700';
     }
   };
 
@@ -141,12 +176,14 @@ const MyHistory = () => {
     if (window.confirm('Are you sure you want to clear all history? This action cannot be undone.')) {
       // Clear history logic would go here
       console.log('History cleared');
+      // Add success animation or notification here
     }
   };
 
   const handleExportHistory = () => {
     // Export history logic would go here
     console.log('Exporting history...');
+    // Add download animation or notification here
   };
 
   const formatDate = (dateString) => {
@@ -164,22 +201,22 @@ const MyHistory = () => {
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
             <div className="flex items-center space-x-3">
-              <MdOutlineHistory className="text-indigo-400" size={32} />
+              <MdOutlineHistory className="text-indigo-400 hover:scale-110 transition-transform duration-200" size={32} />
               <h1 className="text-3xl font-bold text-gray-900">My History</h1>
             </div>
             <div className="flex space-x-2">
-              <button 
+              <button
                 onClick={handleExportHistory}
-                className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 hover:scale-105 hover:shadow-lg transition-all duration-200"
               >
-                <BiDownload size={18} />
+                <BiDownload className="hover:scale-110 transition-transform duration-200" size={18} />
                 <span className="hidden md:inline">Export</span>
               </button>
-              <button 
+              <button
                 onClick={handleClearHistory}
-                className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors"
+                className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 hover:scale-105 hover:shadow-lg transition-all duration-200"
               >
-                <BiRefresh size={18} />
+                <BiRefresh className="hover:rotate-180 transition-transform duration-300" size={18} />
                 <span className="hidden md:inline">Clear All</span>
               </button>
             </div>
@@ -187,47 +224,47 @@ const MyHistory = () => {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:scale-105 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               <div className="flex items-center space-x-2 mb-2">
-                <MdOutlineHistory className="text-indigo-400" size={20} />
+                <MdOutlineHistory className="text-indigo-400 hover:scale-110 transition-transform duration-200" size={20} />
                 <h3 className="text-lg font-semibold text-gray-900">Total Activities</h3>
               </div>
-              <p className="text-3xl font-bold text-gray-900">{historyData.length}</p>
+              <p className="text-3xl font-bold text-gray-900 transition-all duration-300">{historyData.length}</p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:scale-105 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               <div className="flex items-center space-x-2 mb-2">
-                <FaFileAlt className="text-blue-400" size={20} />
+                <FaFileAlt className="text-blue-400 hover:scale-110 transition-transform duration-200" size={20} />
                 <h3 className="text-lg font-semibold text-gray-900">Resume Analysis</h3>
               </div>
-              <p className="text-3xl font-bold text-gray-900">
+              <p className="text-3xl font-bold text-gray-900 transition-all duration-300">
                 {historyData.filter(item => item.type === 'resume').length}
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:scale-105 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               <div className="flex items-center space-x-2 mb-2">
-                <FaRoad className="text-green-400" size={20} />
+                <FaRoad className="text-green-400 hover:scale-110 transition-transform duration-200" size={20} />
                 <h3 className="text-lg font-semibold text-gray-900">Career Roadmaps</h3>
               </div>
-              <p className="text-3xl font-bold text-gray-900">
+              <p className="text-3xl font-bold text-gray-900 transition-all duration-300">
                 {historyData.filter(item => item.type === 'roadmap').length}
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:scale-105 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer">
               <div className="flex items-center space-x-2 mb-2">
-                <FaComments className="text-yellow-400" size={20} />
+                <FaComments className="text-yellow-400 hover:scale-110 transition-transform duration-200" size={20} />
                 <h3 className="text-lg font-semibold text-gray-900">Q&A Sessions</h3>
               </div>
-              <p className="text-3xl font-bold text-gray-900">
+              <p className="text-3xl font-bold text-gray-900 transition-all duration-300">
                 {historyData.filter(item => item.type === 'chat').length}
               </p>
             </div>
           </div>
 
           {/* Filters and Search */}
-          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8">
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8 hover:shadow-xl transition-shadow duration-300">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between space-y-4 lg:space-y-0">
               {/* Filter Buttons */}
               <div className="flex flex-wrap gap-2">
@@ -235,13 +272,13 @@ const MyHistory = () => {
                   <button
                     key={filter.id}
                     onClick={() => setActiveFilter(filter.id)}
-                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors duration-200 ${
+                    className={`flex items-center space-x-2 px-4 py-2 rounded-lg hover:scale-105 hover:shadow-md transition-all duration-200 ${
                       activeFilter === filter.id
-                        ? 'bg-indigo-500 text-gray-900'
+                        ? 'bg-indigo-500 text-white scale-105 shadow-md'
                         : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
                     }`}
                   >
-                    <filter.icon size={16} />
+                    <filter.icon className="hover:scale-110 transition-transform duration-200" size={16} />
                     <span>{filter.name}</span>
                   </button>
                 ))}
@@ -249,13 +286,13 @@ const MyHistory = () => {
 
               {/* Search Bar */}
               <div className="relative">
-                <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={20} />
+                <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 hover:scale-110 transition-transform duration-200" size={20} />
                 <input
                   type="text"
                   placeholder="Search activities..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="bg-gray-100 text-gray-900 pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300 w-full lg:w-64"
+                  className="bg-gray-100 text-gray-900 pl-10 pr-4 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:scale-105 focus:shadow-lg border border-gray-300 w-full lg:w-64 transition-all duration-200"
                 />
               </div>
             </div>
@@ -264,39 +301,46 @@ const MyHistory = () => {
           {/* History List */}
           <div className="space-y-4">
             {filteredHistory.length === 0 ? (
-              <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200 text-center">
-                <MdOutlineHistory className="mx-auto text-gray-600 mb-4" size={48} />
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">No History Found</h3>
-                <p className="text-gray-600">
+              <div className="bg-white rounded-xl p-8 shadow-lg border border-gray-200 text-center hover:shadow-xl transition-shadow duration-300">
+                <MdOutlineHistory className="mx-auto text-gray-600 mb-4 hover:scale-110 hover:text-indigo-400 transition-all duration-300 animate-pulse-hover" size={48} />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors duration-200">No History Found</h3>
+                <p className="text-gray-600 hover:text-gray-800 transition-colors duration-200">
                   {searchTerm ? 'No activities match your search criteria.' : 'Start using the platform to see your activity history here.'}
                 </p>
               </div>
             ) : (
-              filteredHistory.map((item) => (
-                <div key={item.id} className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:border-gray-300 transition-colors">
+              filteredHistory.map((item, index) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:border-indigo-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                  style={{
+                    animationDelay: `${index * 0.1}s`,
+                    animation: 'fadeInUp 0.5s ease-out forwards'
+                  }}
+                >
                   <div className="flex items-start justify-between">
                     <div className="flex items-start space-x-4 flex-1">
-                      <div className="flex-shrink-0">
+                      <div className="flex-shrink-0 hover:scale-110 transition-transform duration-200">
                         {getTypeIcon(item.type)}
                       </div>
-                      
+
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-3 mb-2">
-                          <h3 className="text-lg font-semibold text-gray-900">{item.title}</h3>
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium ${getStatusColor(item.status)}`}>
+                          <h3 className="text-lg font-semibold text-gray-900 hover:text-indigo-600 transition-colors duration-200">{item.title}</h3>
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium transition-all duration-200 hover:scale-110 ${getStatusColor(item.status)}`}>
                             {item.status}
                           </span>
                         </div>
-                        
-                        <p className="text-gray-600 mb-3">{item.description}</p>
-                        
+
+                        <p className="text-gray-600 mb-3 hover:text-gray-800 transition-colors duration-200">{item.description}</p>
+
                         <div className="flex items-center space-x-6 text-sm text-gray-500">
-                          <div className="flex items-center space-x-1">
-                            <FaCalendarAlt size={14} />
+                          <div className="flex items-center space-x-1 hover:text-gray-700 transition-colors duration-200">
+                            <FaCalendarAlt className="hover:scale-110 transition-transform duration-200" size={14} />
                             <span>{formatDate(item.date)}</span>
                           </div>
-                          <div className="flex items-center space-x-1">
-                            <FaClock size={14} />
+                          <div className="flex items-center space-x-1 hover:text-gray-700 transition-colors duration-200">
+                            <FaClock className="hover:scale-110 transition-transform duration-200" size={14} />
                             <span>{item.time}</span>
                           </div>
                         </div>
@@ -305,30 +349,33 @@ const MyHistory = () => {
 
                     {/* Details Panel */}
                     <div className="flex-shrink-0 ml-6">
-                      <div className="bg-gray-100 rounded-lg p-4 min-w-[200px]">
-                        <h4 className="text-sm font-semibold text-gray-900 mb-2">Details</h4>
+                      <div className="bg-gray-100 rounded-lg p-4 min-w-[200px] hover:bg-gray-50 hover:shadow-lg transition-all duration-300">
+                        <h4 className="text-sm font-semibold text-gray-900 mb-2 hover:text-indigo-600 transition-colors duration-200">Details</h4>
                         {item.type === 'resume' && (
                           <div className="space-y-1 text-sm text-gray-700">
-                            <div>Score: <span className="text-gray-900">{item.details.score}%</span></div>
-                            <div>Strengths: <span className="text-green-400">{item.details.strengths}</span></div>
-                            <div>Improvements: <span className="text-yellow-400">{item.details.improvements}</span></div>
-                            <div>Missing Skills: <span className="text-red-400">{item.details.missingSkills}</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Score: <span className="text-gray-900 font-semibold">{item.details.score}%</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Strengths: <span className="text-green-500 font-semibold hover:scale-105 inline-block transition-transform duration-200">{item.details.strengths}</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Improvements: <span className="text-yellow-500 font-semibold hover:scale-105 inline-block transition-transform duration-200">{item.details.improvements}</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Missing Skills: <span className="text-red-500 font-semibold hover:scale-105 inline-block transition-transform duration-200">{item.details.missingSkills}</span></div>
                           </div>
                         )}
                         {item.type === 'roadmap' && (
                           <div className="space-y-1 text-sm text-gray-700">
-                            <div>Duration: <span className="text-gray-900">{item.details.duration}</span></div>
-                            <div>Phases: <span className="text-gray-900">{item.details.phases}</span></div>
-                            <div>Current: <span className="text-indigo-400">{item.details.currentPhase}</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Duration: <span className="text-gray-900 font-semibold">{item.details.duration}</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Phases: <span className="text-gray-900 font-semibold">{item.details.phases}</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Current: <span className="text-indigo-500 font-semibold hover:scale-105 inline-block transition-transform duration-200">{item.details.currentPhase}</span></div>
                           </div>
                         )}
                         {item.type === 'chat' && (
                           <div className="space-y-1 text-sm text-gray-700">
-                            <div>Messages: <span className="text-gray-900">{item.details.messages}</span></div>
-                            <div>Duration: <span className="text-gray-900">{item.details.duration}</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Messages: <span className="text-gray-900 font-semibold">{item.details.messages}</span></div>
+                            <div className="hover:text-gray-900 transition-colors duration-200">Duration: <span className="text-gray-900 font-semibold">{item.details.duration}</span></div>
                             <div className="flex flex-wrap gap-1 mt-2">
                               {item.details.topics.map((topic, index) => (
-                                <span key={index} className="bg-indigo-500/20 text-indigo-400 px-2 py-1 rounded text-xs">
+                                <span
+                                  key={index}
+                                  className="bg-indigo-500/20 text-indigo-600 px-2 py-1 rounded text-xs hover:bg-indigo-500/30 hover:scale-105 transition-all duration-200 cursor-pointer"
+                                >
                                   {topic}
                                 </span>
                               ))}
@@ -346,7 +393,7 @@ const MyHistory = () => {
           {/* Load More Button */}
           {filteredHistory.length > 0 && (
             <div className="text-center mt-8">
-              <button className="bg-gray-100 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300">
+              <button className="bg-gray-100 text-gray-900 px-6 py-3 rounded-full font-semibold hover:bg-indigo-100 hover:text-indigo-600 hover:scale-105 hover:shadow-lg transition-all duration-300">
                 Load More Activities
               </button>
             </div>

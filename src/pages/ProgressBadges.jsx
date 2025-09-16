@@ -182,29 +182,29 @@ const ProgressBadges = () => {
               <h1 className="text-3xl font-bold text-gray-900 mb-2">Progress & Badges</h1>
               <p className="text-gray-600">Track your learning journey and celebrate achievements</p>
             </div>
-            <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 px-4 py-2 rounded-lg transition-colors mt-4 lg:mt-0">
+            <button className="flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 hover:scale-105 hover:shadow-lg px-4 py-2 rounded-lg transition-all duration-200 mt-4 lg:mt-0">
               <BiRefresh size={16} />
               Refresh Progress
             </button>
           </div>
 
           {/* Progress Overview */}
-          <div className="bg-white rounded-xl p-6 border border-gray-200 mb-8">
+          <div className="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 hover:shadow-lg transition-all duration-300 mb-8">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
-              <div className="text-center">
-                <div className="text-3xl font-bold text-indigo-400">{progressStats.totalPoints}</div>
+              <div className="text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <div className="text-3xl font-bold text-indigo-400 transition-all duration-300 hover:text-indigo-500">{progressStats.totalPoints}</div>
                 <div className="text-sm text-gray-600">Total Points</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-green-400">Level {progressStats.currentLevel}</div>
+              <div className="text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <div className="text-3xl font-bold text-green-400 transition-all duration-300 hover:text-green-500">Level {progressStats.currentLevel}</div>
                 <div className="text-sm text-gray-600">{progressStats.pointsToNext} to Level {progressStats.nextLevel}</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-400">{progressStats.streakDays}</div>
+              <div className="text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <div className="text-3xl font-bold text-yellow-400 transition-all duration-300 hover:text-yellow-500">{progressStats.streakDays}</div>
                 <div className="text-sm text-gray-600">Day Streak</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-purple-400">{progressStats.totalBadges}</div>
+              <div className="text-center hover:scale-105 transition-transform duration-300 cursor-pointer">
+                <div className="text-3xl font-bold text-purple-400 transition-all duration-300 hover:text-purple-500">{progressStats.totalBadges}</div>
                 <div className="text-sm text-gray-600">Badges Earned</div>
               </div>
             </div>
@@ -230,7 +230,7 @@ const ProgressBadges = () => {
           {/* Achievement Progress */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {achievements.map((achievement) => (
-              <div key={achievement.id} className="bg-white rounded-xl p-6 border border-gray-200">
+              <div key={achievement.id} className="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                 <div className="flex items-center justify-between mb-4">
                   <achievement.icon className={`${achievement.color}`} size={24} />
                   <span className="text-sm text-gray-600">{achievement.value}/{achievement.target}</span>
@@ -253,50 +253,50 @@ const ProgressBadges = () => {
           <div className="flex flex-wrap gap-3 mb-6">
             <button
               onClick={() => setSelectedCategory('all')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                 selectedCategory === 'all'
                   ? 'bg-indigo-600 text-gray-900'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               All Badges
             </button>
             <button
               onClick={() => setSelectedCategory('milestone')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                 selectedCategory === 'milestone'
                   ? 'bg-indigo-600 text-gray-900'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               Milestones
             </button>
             <button
               onClick={() => setSelectedCategory('skill')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                 selectedCategory === 'skill'
                   ? 'bg-indigo-600 text-gray-900'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               Skills
             </button>
             <button
               onClick={() => setSelectedCategory('consistency')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                 selectedCategory === 'consistency'
                   ? 'bg-indigo-600 text-gray-900'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               Consistency
             </button>
             <button
               onClick={() => setSelectedCategory('social')}
-              className={`px-4 py-2 rounded-lg transition-colors ${
+              className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                 selectedCategory === 'social'
                   ? 'bg-indigo-600 text-gray-900'
-                  : 'bg-white text-gray-600 hover:text-gray-900'
+                  : 'bg-white text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               Social
@@ -308,17 +308,17 @@ const ProgressBadges = () => {
             {filteredBadges.map((badge) => (
               <div
                 key={badge.id}
-                className={`bg-white rounded-xl p-6 border-2 transition-all duration-200 hover:scale-105 ${
+                className={`bg-white rounded-xl p-6 border-2 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-2 cursor-pointer ${
                   badge.earned
-                    ? getRarityColor(badge.rarity)
-                    : 'border-gray-200 bg-white/50 opacity-75'
+                    ? `${getRarityColor(badge.rarity)} hover:shadow-xl ${badge.rarity === 'legendary' ? 'badge-glow' : ''}`
+                    : 'border-gray-200 bg-white/50 opacity-75 hover:opacity-90'
                 }`}
               >
                 <div className="flex flex-col items-center text-center">
-                  <div className={`relative mb-4 ${badge.earned ? '' : 'opacity-50'}`}>
+                  <div className={`relative mb-4 transition-all duration-300 ${badge.earned ? 'hover:scale-110' : 'opacity-50'}`}>
                     <badge.icon
                       size={48}
-                      className={badge.earned ? getRarityTextColor(badge.rarity) : 'text-gray-600'}
+                      className={`transition-all duration-300 ${badge.earned ? `${getRarityTextColor(badge.rarity)} hover:drop-shadow-lg` : 'text-gray-600'}`}
                     />
                     {!badge.earned && (
                       <FaLock
@@ -352,7 +352,7 @@ const ProgressBadges = () => {
                       <div className="text-xs text-gray-600 mb-1">{badge.progress}% Complete</div>
                       <div className="w-full bg-gray-100 rounded-full h-2">
                         <div
-                          className="bg-indigo-500 h-2 rounded-full transition-all duration-500"
+                          className="bg-gradient-to-r from-indigo-500 to-purple-500 h-2 rounded-full transition-all duration-500 animate-pulse"
                           style={{ width: `${badge.progress}%` }}
                         ></div>
                       </div>

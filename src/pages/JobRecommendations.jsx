@@ -201,17 +201,17 @@ const JobRecommendations = () => {
       <div className="p-4 md:p-8">
           {/* Header Section */}
           <div className="flex justify-between items-center mb-8">
-            <div className="flex items-center space-x-3">
-              <FaUserTie className="text-indigo-400" size={32} />
-              <h1 className="text-3xl font-bold text-gray-900">Job Recommendations</h1>
+            <div className="flex items-center space-x-3 group">
+              <FaUserTie className="text-indigo-400 transition-all duration-300 transform group-hover:scale-110 group-hover:rotate-12" size={32} />
+              <h1 className="text-3xl font-bold text-gray-900 transition-colors duration-300 hover:text-indigo-600">Job Recommendations</h1>
             </div>
             <div className="flex space-x-2">
-              <button className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors">
-                <BiBookmarkHeart size={18} />
+              <button className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-gray-100 hover:text-gray-900 hover:shadow-md">
+                <BiBookmarkHeart size={18} className="transition-transform duration-200 hover:scale-110" />
                 <span className="hidden md:inline">Saved ({savedJobs.size})</span>
               </button>
-              <button className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-gray-900 transition-colors">
-                <BiRefresh size={18} />
+              <button className="flex items-center space-x-2 bg-white text-gray-600 px-4 py-2 rounded-lg border border-gray-200 transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-gray-100 hover:text-gray-900 hover:shadow-md">
+                <BiRefresh size={18} className="transition-transform duration-200 hover:rotate-180" />
                 <span className="hidden md:inline">Refresh</span>
               </button>
             </div>
@@ -219,55 +219,55 @@ const JobRecommendations = () => {
 
           {/* Stats Cards */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1 group">
               <div className="flex items-center space-x-2 mb-2">
-                <MdOutlineWorkOutline className="text-indigo-400" size={20} />
-                <h3 className="text-lg font-semibold text-gray-900">Available Jobs</h3>
+                <MdOutlineWorkOutline className="text-indigo-400 transition-all duration-200 transform group-hover:scale-110 group-hover:rotate-12" size={20} />
+                <h3 className="text-lg font-semibold text-gray-900 transition-colors duration-200 group-hover:text-indigo-600">Available Jobs</h3>
               </div>
-              <p className="text-3xl font-bold text-gray-900">{jobsData.length}</p>
+              <p className="text-3xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-indigo-600">{jobsData.length}</p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1 group">
               <div className="flex items-center space-x-2 mb-2">
-                <FaHeart className="text-red-400" size={20} />
-                <h3 className="text-lg font-semibold text-gray-900">Saved Jobs</h3>
+                <FaHeart className="text-red-400 transition-all duration-200 transform group-hover:scale-110 group-hover:rotate-12" size={20} />
+                <h3 className="text-lg font-semibold text-gray-900 transition-colors duration-200 group-hover:text-red-500">Saved Jobs</h3>
               </div>
-              <p className="text-3xl font-bold text-gray-900">{savedJobs.size}</p>
+              <p className="text-3xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-red-500">{savedJobs.size}</p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1 group">
               <div className="flex items-center space-x-2 mb-2">
-                <MdOutlineLocationOn className="text-blue-400" size={20} />
-                <h3 className="text-lg font-semibold text-gray-900">Remote Jobs</h3>
+                <MdOutlineLocationOn className="text-blue-400 transition-all duration-200 transform group-hover:scale-110 group-hover:rotate-12" size={20} />
+                <h3 className="text-lg font-semibold text-gray-900 transition-colors duration-200 group-hover:text-blue-500">Remote Jobs</h3>
               </div>
-              <p className="text-3xl font-bold text-gray-900">
+              <p className="text-3xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-blue-500">
                 {jobsData.filter(job => job.location.toLowerCase().includes('remote')).length}
               </p>
             </div>
 
-            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200">
+            <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:-translate-y-1 group">
               <div className="flex items-center space-x-2 mb-2">
-                <MdOutlineAttachMoney className="text-green-400" size={20} />
-                <h3 className="text-lg font-semibold text-gray-900">Avg Match</h3>
+                <MdOutlineAttachMoney className="text-green-400 transition-all duration-200 transform group-hover:scale-110 group-hover:rotate-12" size={20} />
+                <h3 className="text-lg font-semibold text-gray-900 transition-colors duration-200 group-hover:text-green-500">Avg Match</h3>
               </div>
-              <p className="text-3xl font-bold text-gray-900">
+              <p className="text-3xl font-bold text-gray-900 transition-colors duration-300 group-hover:text-green-500">
                 {Math.round(jobsData.reduce((acc, job) => acc + job.matchScore, 0) / jobsData.length)}%
               </p>
             </div>
           </div>
 
           {/* Search and Filters */}
-          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8">
+          <div className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 mb-8 transition-all duration-300 hover:shadow-xl">
             <div className="flex flex-col lg:flex-row lg:items-center gap-4">
               {/* Search Bar */}
               <div className="flex-1 relative">
-                <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={20} />
+                <MdSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 transition-transform duration-200 hover:scale-110" size={20} />
                 <input
                   type="text"
                   placeholder="Search jobs, companies, or skills..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full bg-gray-100 text-gray-900 pl-10 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-400 border border-gray-300"
+                  className="w-full bg-gray-100 text-gray-900 pl-10 pr-4 py-3 rounded-lg border border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:scale-[1.02] focus:shadow-lg focus:bg-white"
                 />
               </div>
 
@@ -278,7 +278,7 @@ const JobRecommendations = () => {
                     key={filterType}
                     value={selectedFilters[filterType]}
                     onChange={(e) => handleFilterChange(filterType, e.target.value)}
-                    className="bg-gray-100 text-gray-900 px-3 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+                    className="bg-gray-100 text-gray-900 px-3 py-2 rounded-lg border border-gray-300 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:scale-105 focus:shadow-md hover:bg-gray-50"
                   >
                     {options.map(option => (
                       <option key={option.value} value={option.value}>
@@ -293,11 +293,11 @@ const JobRecommendations = () => {
 
           {/* Job Results */}
           <div className="mb-4 flex items-center justify-between">
-            <p className="text-gray-600">
-              Showing {filteredJobs.length} job{filteredJobs.length !== 1 ? 's' : ''} 
+            <p className="text-gray-600 transition-colors duration-200 hover:text-gray-700">
+              Showing {filteredJobs.length} job{filteredJobs.length !== 1 ? 's' : ''}
               {searchTerm && ` matching "${searchTerm}"`}
             </p>
-            <select className="bg-white text-gray-900 px-3 py-2 rounded-lg border border-gray-200 focus:outline-none">
+            <select className="bg-white text-gray-900 px-3 py-2 rounded-lg border border-gray-200 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-400 hover:border-indigo-300">
               <option>Sort by Match</option>
               <option>Sort by Date</option>
               <option>Sort by Salary</option>
@@ -316,71 +316,71 @@ const JobRecommendations = () => {
               </div>
             ) : (
               filteredJobs.map((job) => (
-                <div key={job.id} className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 hover:border-gray-300 transition-colors">
+                <div key={job.id} className="bg-white rounded-xl p-6 shadow-lg border border-gray-200 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:-translate-y-1 hover:border-indigo-300 group">
                   <div className="flex items-start justify-between">
                     <div className="flex items-start space-x-4 flex-1">
-                      <div className="text-4xl">{job.logo}</div>
-                      
+                      <div className="text-4xl transition-transform duration-200 group-hover:scale-110">{job.logo}</div>
+
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center space-x-3 mb-2">
-                          <h3 className="text-xl font-semibold text-gray-900">{job.title}</h3>
-                          <span className={`px-3 py-1 rounded-full text-sm font-medium ${getMatchBadgeColor(job.matchScore)}`}>
+                          <h3 className="text-xl font-semibold text-gray-900 transition-colors duration-200 group-hover:text-indigo-600">{job.title}</h3>
+                          <span className={`px-3 py-1 rounded-full text-sm font-medium transition-all duration-200 transform group-hover:scale-105 ${getMatchBadgeColor(job.matchScore)}`}>
                             {job.matchScore}% match
                           </span>
                         </div>
                         
-                        <div className="flex items-center space-x-4 text-gray-600 text-sm mb-3">
+                        <div className="flex items-center space-x-4 text-gray-600 text-sm mb-3 group-hover:text-gray-700 transition-colors duration-200">
                           <div className="flex items-center space-x-1">
-                            <FaBuilding size={14} />
+                            <FaBuilding size={14} className="transition-transform duration-200 group-hover:scale-110" />
                             <span>{job.company}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <FaMapMarkerAlt size={14} />
+                            <FaMapMarkerAlt size={14} className="transition-transform duration-200 group-hover:scale-110" />
                             <span>{job.location}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <FaDollarSign size={14} />
+                            <FaDollarSign size={14} className="transition-transform duration-200 group-hover:scale-110" />
                             <span>{job.salary}</span>
                           </div>
                           <div className="flex items-center space-x-1">
-                            <FaClock size={14} />
+                            <FaClock size={14} className="transition-transform duration-200 group-hover:scale-110" />
                             <span>{job.posted}</span>
                           </div>
                         </div>
-                        
-                        <p className="text-gray-700 mb-4">{job.description}</p>
+
+                        <p className="text-gray-700 mb-4 group-hover:text-gray-800 transition-colors duration-200">{job.description}</p>
                         
                         <div className="flex flex-wrap gap-2 mb-4">
                           {job.requirements.map((skill, index) => (
-                            <span key={index} className="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded-full text-sm">
+                            <span key={index} className="bg-indigo-500/20 text-indigo-400 px-3 py-1 rounded-full text-sm transition-all duration-200 transform hover:scale-105 hover:bg-indigo-500/30 hover:shadow-md cursor-default">
                               {skill}
                             </span>
                           ))}
                         </div>
                         
                         <div className="flex items-center justify-between">
-                          <div className="text-sm text-gray-600">
+                          <div className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-200">
                             {job.applicants} applicants
                           </div>
-                          
+
                           <div className="flex space-x-3">
                             <button
                               onClick={() => handleSaveJob(job.id)}
-                              className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-colors ${
+                              className={`flex items-center space-x-1 px-3 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:shadow-md ${
                                 savedJobs.has(job.id)
-                                  ? 'bg-red-600 text-gray-900 hover:bg-red-700'
+                                  ? 'bg-red-600 text-white hover:bg-red-700 shadow-lg shadow-red-500/25'
                                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                               }`}
                             >
-                              <BiBookmark size={16} />
+                              <BiBookmark size={16} className="transition-transform duration-200 hover:scale-110" />
                               <span>{savedJobs.has(job.id) ? 'Saved' : 'Save'}</span>
                             </button>
-                            
+
                             <button
                               onClick={() => handleApplyJob(job)}
-                              className="flex items-center space-x-1 bg-indigo-500 text-white px-4 py-2 rounded-lg hover:bg-indigo-600 transition-colors"
+                              className="flex items-center space-x-1 bg-indigo-500 text-white px-4 py-2 rounded-lg transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-indigo-600 hover:shadow-lg hover:shadow-indigo-500/25"
                             >
-                              <FaExternalLinkAlt size={14} />
+                              <FaExternalLinkAlt size={14} className="transition-transform duration-200 hover:scale-110" />
                               <span>Apply</span>
                             </button>
                           </div>
@@ -396,7 +396,7 @@ const JobRecommendations = () => {
           {/* Load More Button */}
           {filteredJobs.length > 0 && (
             <div className="text-center mt-8">
-              <button className="bg-gray-100 text-gray-900 px-8 py-3 rounded-full font-semibold hover:bg-gray-200 transition-colors duration-300">
+              <button className="bg-gray-100 text-gray-900 px-8 py-3 rounded-full font-semibold transition-all duration-200 transform hover:scale-105 active:scale-95 hover:bg-gray-200 hover:shadow-lg">
                 Load More Jobs
               </button>
             </div>

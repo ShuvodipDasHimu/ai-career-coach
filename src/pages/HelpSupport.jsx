@@ -167,7 +167,7 @@ const HelpSupport = () => {
           {/* Quick Support Options */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             {supportOptions.map((option) => (
-              <div key={option.id} className="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 transition-colors cursor-pointer">
+              <div key={option.id} className="bg-white rounded-xl p-6 border border-gray-200 hover:border-gray-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                 <div className="flex items-center justify-between mb-4">
                   <option.icon className={`${option.color}`} size={24} />
                   <span className="text-xs text-gray-600">{option.responseTime}</span>
@@ -185,13 +185,13 @@ const HelpSupport = () => {
 
             {/* Search Bar */}
             <div className="relative mb-6">
-              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600" size={16} />
+              <FaSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600 transition-colors duration-200" size={16} />
               <input
                 type="text"
                 placeholder="Search FAQ..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+                className="w-full pl-10 pr-4 py-3 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:scale-105 transition-all duration-200 text-gray-900"
               />
             </div>
 
@@ -199,50 +199,50 @@ const HelpSupport = () => {
             <div className="flex flex-wrap gap-3 mb-6">
               <button
                 onClick={() => setSelectedCategory('all')}
-                className={`px-4 py-2 rounded-lg transition-colors ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                   selectedCategory === 'all'
                     ? 'bg-indigo-600 text-gray-900'
-                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200'
                 }`}
               >
                 All
               </button>
               <button
                 onClick={() => setSelectedCategory('account')}
-                className={`px-4 py-2 rounded-lg transition-colors ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                   selectedCategory === 'account'
                     ? 'bg-indigo-600 text-gray-900'
-                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200'
                 }`}
               >
                 Account
               </button>
               <button
                 onClick={() => setSelectedCategory('features')}
-                className={`px-4 py-2 rounded-lg transition-colors ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                   selectedCategory === 'features'
                     ? 'bg-indigo-600 text-gray-900'
-                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200'
                 }`}
               >
                 Features
               </button>
               <button
                 onClick={() => setSelectedCategory('billing')}
-                className={`px-4 py-2 rounded-lg transition-colors ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                   selectedCategory === 'billing'
                     ? 'bg-indigo-600 text-gray-900'
-                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200'
                 }`}
               >
                 Billing
               </button>
               <button
                 onClick={() => setSelectedCategory('technical')}
-                className={`px-4 py-2 rounded-lg transition-colors ${
+                className={`px-4 py-2 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-md ${
                   selectedCategory === 'technical'
                     ? 'bg-indigo-600 text-gray-900'
-                    : 'bg-gray-100 text-gray-600 hover:text-gray-900'
+                    : 'bg-gray-100 text-gray-600 hover:text-gray-900 hover:bg-gray-200'
                 }`}
               >
                 Technical
@@ -252,23 +252,27 @@ const HelpSupport = () => {
             {/* FAQ List */}
             <div className="space-y-4">
               {filteredFaqs.map((faq) => (
-                <div key={faq.id} className="border border-gray-200 rounded-lg">
+                <div key={faq.id} className="border border-gray-200 rounded-lg overflow-hidden transition-all duration-300 hover:border-gray-300 hover:shadow-md">
                   <button
                     onClick={() => setExpandedFaq(expandedFaq === faq.id ? null : faq.id)}
-                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-100/50 transition-colors"
+                    className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-100/50 transition-all duration-200"
                   >
                     <span className="font-medium text-gray-900">{faq.question}</span>
-                    {expandedFaq === faq.id ? (
-                      <FaChevronUp className="text-gray-600" size={16} />
-                    ) : (
+                    <div className={`transition-transform duration-300 ${
+                      expandedFaq === faq.id ? 'transform rotate-180' : ''
+                    }`}>
                       <FaChevronDown className="text-gray-600" size={16} />
-                    )}
-                  </button>
-                  {expandedFaq === faq.id && (
-                    <div className="px-4 pb-4 text-gray-700 border-t border-gray-200">
-                      <p className="mt-3">{faq.answer}</p>
                     </div>
-                  )}
+                  </button>
+                  <div className={`transition-all duration-300 ease-in-out ${
+                    expandedFaq === faq.id
+                      ? 'max-h-96 opacity-100'
+                      : 'max-h-0 opacity-0'
+                  } overflow-hidden`}>
+                    <div className="px-4 pb-4 text-gray-700 border-t border-gray-200">
+                      <p className="mt-3 transform transition-transform duration-300">{faq.answer}</p>
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
@@ -286,7 +290,7 @@ const HelpSupport = () => {
               <h2 className="text-2xl font-bold text-gray-900 mb-6">Video Tutorials</h2>
               <div className="space-y-4">
                 {tutorials.map((tutorial) => (
-                  <div key={tutorial.id} className="flex items-center gap-4 p-4 bg-gray-100/50 rounded-lg hover:bg-gray-100 transition-colors cursor-pointer">
+                  <div key={tutorial.id} className="flex items-center gap-4 p-4 bg-gray-100/50 rounded-lg hover:bg-gray-100 hover:scale-105 hover:shadow-md hover:-translate-y-1 transition-all duration-300 cursor-pointer">
                     <FaVideo className="text-indigo-400" size={20} />
                     <div className="flex-1">
                       <h3 className="font-medium text-gray-900">{tutorial.title}</h3>
@@ -309,7 +313,7 @@ const HelpSupport = () => {
                     value={contactForm.subject}
                     onChange={(e) => setContactForm({...contactForm, subject: e.target.value})}
                     placeholder="Brief description of your issue"
-                    className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+                    className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:scale-105 focus:shadow-md transition-all duration-200 text-gray-900"
                     required
                   />
                 </div>
@@ -320,7 +324,7 @@ const HelpSupport = () => {
                     <select
                       value={contactForm.category}
                       onChange={(e) => setContactForm({...contactForm, category: e.target.value})}
-                      className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+                      className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:scale-105 focus:shadow-md transition-all duration-200 text-gray-900"
                     >
                       <option value="general">General</option>
                       <option value="technical">Technical</option>
@@ -334,7 +338,7 @@ const HelpSupport = () => {
                     <select
                       value={contactForm.priority}
                       onChange={(e) => setContactForm({...contactForm, priority: e.target.value})}
-                      className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900"
+                      className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:scale-105 focus:shadow-md transition-all duration-200 text-gray-900"
                     >
                       <option value="low">Low</option>
                       <option value="medium">Medium</option>
@@ -351,14 +355,14 @@ const HelpSupport = () => {
                     onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
                     placeholder="Describe your issue in detail..."
                     rows={5}
-                    className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 resize-none"
+                    className="w-full px-3 py-2 bg-gray-100 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 focus:scale-105 focus:shadow-md transition-all duration-200 text-gray-900 resize-none"
                     required
                   />
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-gray-900 px-4 py-3 rounded-lg transition-colors"
+                  className="w-full flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-700 hover:scale-105 hover:shadow-lg text-gray-900 px-4 py-3 rounded-lg transition-all duration-200"
                 >
                   <BiSend size={16} />
                   Send Message

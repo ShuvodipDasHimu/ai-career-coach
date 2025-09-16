@@ -124,33 +124,38 @@ const Sidebar = () => {
   return (
     <>
       <div className="fixed left-0 top-0 w-64 bg-white text-gray-600 p-4 h-screen border-r border-gray-200 overflow-y-auto z-10">
-        <div className="flex flex-col space-y-2">
-          {navigationItems.map((item, index) => (
-            item.type === 'nav' ? (
+        <div className="flex flex-col h-full">
+          <div className="flex flex-col space-y-2 flex-grow">
+            {navigationItems.filter(item => item.type === 'nav').map((item, index) => (
               <NavLink
                 key={index}
                 to={item.path}
                 className={({ isActive }) =>
-                  `flex items-center space-x-2 p-2 rounded-lg transition-colors duration-200 ` +
+                  `flex items-center space-x-2 p-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md ` +
                   (isActive
-                    ? 'bg-gray-100 text-gray-900'
-                    : 'hover:bg-gray-100 hover:text-gray-900')
+                    ? 'bg-indigo-100 text-indigo-800 shadow-md scale-105'
+                    : 'hover:bg-gray-100 hover:text-gray-900 hover:translate-x-2')
                 }
               >
                 <item.icon className="h-5 w-5" />
                 <span className="text-sm font-medium">{item.name}</span>
               </NavLink>
-            ) : (
+            ))}
+          </div>
+
+          {/* Logout button at bottom */}
+          <div className="mt-auto pt-4 border-t border-gray-200">
+            {navigationItems.filter(item => item.type === 'action').map((item, index) => (
               <button
                 key={index}
                 onClick={handleLogoutClick}
-                className="flex items-center space-x-2 p-2 rounded-lg transition-colors duration-200 hover:bg-gray-100 hover:text-gray-900 text-left w-full"
+                className="flex items-center space-x-2 p-3 rounded-lg transition-all duration-300 transform hover:scale-105 hover:shadow-md hover:bg-red-50 hover:text-red-600 hover:translate-x-2 text-left w-full"
               >
                 <item.icon className="h-5 w-5" />
                 <span className="text-sm font-medium">{item.name}</span>
               </button>
-            )
-          ))}
+            ))}
+          </div>
         </div>
       </div>
 
