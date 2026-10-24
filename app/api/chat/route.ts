@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getClient, MODEL, PROFILE_PREAMBLE } from "@/lib/ai";
+import { streamChat, PROFILE_PREAMBLE } from "@/lib/ai";
 import { handleError, rateLimit, tooMany } from "@/lib/api";
 import { chatRequestSchema } from "@/lib/schemas";
 
@@ -18,7 +18,6 @@ export async function POST(req: Request) {
   if (!rateLimit(req, 30)) return tooMany();
   try {
     const { messages, profile } = chatRequestSchema.parse(await req.json());
-    const anthropic = getClient();
 
     const context = profile && (profile.targetRole || profile.skills.length || profile.location)
       ? `\n\nAbout the user (data): ${JSON.stringify({
@@ -34,32 +33,7 @@ export async function POST(req: Request) {
     while (trimmed.length && trimmed[0].role !== "user") trimmed.shift();
     if (!trimmed.length) return NextResponse.json({ error: "No user message." }, { status: 400 });
 
-    const stream = anthropic.messages.stream({
-      model: MODEL,
-      max_tokens: 1200,
-      system: SYSTEM + context,
-      messages: trimmed,
-    });
-
-    const encoder = new TextEncoder();
-    const body = new ReadableStream<Uint8Array>({
-      async start(controller) {
-        try {
-          for await (const event of stream) {
-            if (event.type === "content_block_delta" && event.delta.type === "text_delta") {
-              controller.enqueue(encoder.encode(event.delta.text));
-            }
-          }
-          controller.close();
-        } catch (err) {
-          console.error("[chat stream]", err);
-          controller.error(err);
-        }
-      },
-      cancel() {
-        stream.abort();
-      },
-    });
+    const body = streamChat(SYSTEM + context, trimmed);
 
     return new Response(body, {
       headers: { "Content-Type": "text/plain; charset=utf-8", "Cache-Control": "no-store" },

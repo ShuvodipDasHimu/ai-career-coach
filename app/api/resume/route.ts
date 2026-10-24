@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import mammoth from "mammoth";
-import type Anthropic from "@anthropic-ai/sdk";
-import { generateJson, PROFILE_PREAMBLE } from "@/lib/ai";
+import { generateJson, PROFILE_PREAMBLE, type AiContent } from "@/lib/ai";
 import { handleError, rateLimit, tooMany } from "@/lib/api";
 import { resumeAnalysisSchema } from "@/lib/schemas";
 
@@ -48,17 +47,11 @@ export async function POST(req: Request) {
     const name = file.name.toLowerCase();
     const buffer = Buffer.from(await file.arrayBuffer());
     const intro = targetRole ? `Target role: ${targetRole}\n\nAnalyze this resume.` : "Analyze this resume.";
-    let content: Anthropic.MessageParam["content"];
+    let content: AiContent;
 
     if (name.endsWith(".pdf") || file.type === "application/pdf") {
-      // Claude reads PDFs natively (text + layout), which also helps judge ATS formatting.
-      content = [
-        {
-          type: "document",
-          source: { type: "base64", media_type: "application/pdf", data: buffer.toString("base64") },
-        },
-        { type: "text", text: intro },
-      ];
+      // The model reads PDFs natively (text + layout), which also helps judge ATS formatting.
+      content = { text: intro, pdfBase64: buffer.toString("base64") };
     } else if (name.endsWith(".docx")) {
       const { value } = await mammoth.extractRawText({ buffer });
       if (value.trim().length < 50) {
