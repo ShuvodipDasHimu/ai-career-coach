@@ -1,16 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState, type FormEvent } from "react";
-import { FaUser } from "react-icons/fa";
-import { useAuth } from "@/lib/auth";
+import { FaGoogle, FaUser } from "react-icons/fa";
+import { useAuth, type OAuthProvider } from "@/lib/auth";
 import { Button, ErrorNote, inputClass } from "@/components/ui";
 
 export function AuthForm({ mode }: { mode: "login" | "register" }) {
   const router = useRouter();
-  const { user, loading, login, register, loginAsGuest } = useAuth();
+  const { user, loading, login, register, loginAsGuest, loginWithProvider } = useAuth();
+  const urlError = useSearchParams().get("error");
   const [error, setError] = useState("");
+  const [oauthBusy, setOauthBusy] = useState<OAuthProvider | null>(null);
   const [busy, setBusy] = useState(false);
   const isRegister = mode === "register";
 
@@ -42,10 +44,30 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
     }
   }
 
+  async function onProvider(provider: OAuthProvider) {
+    setError("");
+    setOauthBusy(provider);
+    try {
+      await loginWithProvider(provider); // redirects to the provider
+    } catch {
+      setError("Could not start sign-in. Please try again.");
+      setOauthBusy(null);
+    }
+  }
+
+  const verb = isRegister ? "Sign up" : "Sign in";
+  const providerError = urlError ? oauthErrorMessage(urlError) : "";
+
   return (
     <div className="flex min-h-[70vh] items-center justify-center p-4">
       <div className="w-full max-w-sm rounded-lg border border-gray-700 bg-gray-800 p-8 shadow-lg">
         <h1 className="mb-6 text-center text-3xl font-bold">{isRegister ? "Create an Account" : "Log In"}</h1>
+
+        {providerError && !error && (
+          <div className="mb-4">
+            <ErrorNote>{providerError}</ErrorNote>
+          </div>
+        )}
 
         <form onSubmit={onSubmit} className="space-y-4" noValidate={false}>
           {isRegister && (
@@ -99,8 +121,31 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
 
         <div className="relative flex items-center py-5">
           <div className="flex-grow border-t border-gray-600" />
-          <span className="mx-4 text-sm text-gray-500">Or</span>
+          <span className="mx-4 text-sm text-gray-500">Or continue with</span>
           <div className="flex-grow border-t border-gray-600" />
+        </div>
+
+        <div className="mb-3 space-y-3">
+          <Button
+            type="button"
+            variant="secondary"
+            disabled={oauthBusy !== null}
+            onClick={() => onProvider("google")}
+            className="w-full rounded-md border border-gray-600"
+          >
+            <FaGoogle /> {oauthBusy === "google" ? "Redirecting…" : `${verb} with Google`}
+          </Button>
+          {/* LinkedIn disabled — re-enable here and in auth.ts
+          <Button
+            type="button"
+            variant="secondary"
+            disabled={oauthBusy !== null}
+            onClick={() => onProvider("linkedin")}
+            className="w-full rounded-md border border-gray-600"
+          >
+            <FaLinkedinIn /> {oauthBusy === "linkedin" ? "Redirecting…" : `${verb} with LinkedIn`}
+          </Button>
+          */}
         </div>
 
         <Button
@@ -126,6 +171,19 @@ export function AuthForm({ mode }: { mode: "login" | "register" }) {
       </div>
     </div>
   );
+}
+
+function oauthErrorMessage(code: string): string {
+  switch (code) {
+    case "OAuthAccountNotLinked":
+      return "This email is already linked to a different sign-in method. Use the one you used originally.";
+    case "AccessDenied":
+      return "Access was denied. Please try again.";
+    case "Configuration":
+      return "Social sign-in isn't configured on the server yet (missing environment variables).";
+    default:
+      return "Sign-in failed. Please try again.";
+  }
 }
 
 function Field({ label, id, children }: { label: string; id: string; children: React.ReactNode }) {

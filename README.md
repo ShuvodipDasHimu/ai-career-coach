@@ -34,6 +34,9 @@ npm run dev
 
 Open http://localhost:3000. `npm run typecheck` and `npm run build` should both pass.
 
+### Social sign-in (Google + LinkedIn)
+Sign in / Sign up with Google and LinkedIn run on Auth.js v5 (`auth.ts`, `app/api/auth/[...nextauth]`). Both flows are the same OAuth redirect; the account is created on first sign-in. Required env vars are listed in `.env.example`. Redirect URIs to register with each provider: `{origin}/api/auth/callback/google` and `{origin}/api/auth/callback/linkedin`.
+
 ### Deploy to Vercel
 Import the repo, set `ANTHROPIC_API_KEY` (and optionally `ANTHROPIC_MODEL`) in Project Settings → Environment Variables. Function bodies are limited to ~4.5 MB on Vercel, which is why uploads are capped at 4 MB.
 

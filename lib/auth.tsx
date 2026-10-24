@@ -1,12 +1,11 @@
 "use client";
 
 /**
- * DEMO AUTH — accounts live in this browser's localStorage only.
- * It gives each person their own workspace and protects the app routes, but it is NOT
- * secure authentication. For production, swap this provider for Auth.js / Clerk / Firebase Auth;
- * the rest of the app only depends on `useAuth()`.
+ * Email/password + guest accounts are DEMO-grade (browser localStorage only).
+ * Google/LinkedIn sign-in is real OAuth through Auth.js and takes precedence when present.
  */
 
+import { signIn, signOut, useSession } from "next-auth/react";
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from "react";
 
 export interface User {
@@ -21,11 +20,14 @@ interface Account extends User {
   hash: string;
 }
 
+export type OAuthProvider = "google" | "linkedin";
+
 interface AuthContextValue {
   user: User | null;
   loading: boolean;
   register: (name: string, email: string, password: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
+  loginWithProvider: (provider: OAuthProvider) => Promise<void>;
   loginAsGuest: () => void;
   logout: () => void;
 }
@@ -44,34 +46,41 @@ function readAccounts(): Record<string, Account> {
 }
 
 async function sha256(text: string): Promise<string> {
-  const data = new TextEncoder().encode(text);
-  const digest = await crypto.subtle.digest("SHA-256", data);
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(text));
   return Array.from(new Uint8Array(digest))
     .map((b) => b.toString(16).padStart(2, "0"))
     .join("");
 }
 
-function randomId() {
-  return crypto.randomUUID();
-}
-
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
-  const [loading, setLoading] = useState(true);
+  const { data: session, status } = useSession();
+  const [local, setLocal] = useState<User | null>(null);
+  const [localLoading, setLocalLoading] = useState(true);
 
   useEffect(() => {
     try {
       const raw = localStorage.getItem(SESSION_KEY);
-      if (raw) setUser(JSON.parse(raw) as User);
+      if (raw) setLocal(JSON.parse(raw) as User);
     } catch {
       /* ignore corrupt session */
     }
-    setLoading(false);
+    setLocalLoading(false);
   }, []);
 
-  const startSession = useCallback((u: User) => {
+  const oauthUser: User | null = session?.user?.email
+    ? {
+        id: `oauth-${session.user.email.toLowerCase()}`,
+        name: session.user.name ?? session.user.email,
+        email: session.user.email,
+      }
+    : null;
+
+  const user = oauthUser ?? local;
+  const loading = status === "loading" || localLoading;
+
+  const startLocalSession = useCallback((u: User) => {
     localStorage.setItem(SESSION_KEY, JSON.stringify(u));
-    setUser(u);
+    setLocal(u);
   }, []);
 
   const register = useCallback(
@@ -79,9 +88,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const key = email.trim().toLowerCase();
       const accounts = readAccounts();
       if (accounts[key]) throw new Error("An account with this email already exists.");
-      const salt = randomId();
+      const salt = crypto.randomUUID();
       const account: Account = {
-        id: randomId(),
+        id: crypto.randomUUID(),
         name: name.trim(),
         email: key,
         salt,
@@ -89,9 +98,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       };
       accounts[key] = account;
       localStorage.setItem(ACCOUNTS_KEY, JSON.stringify(accounts));
-      startSession({ id: account.id, name: account.name, email: account.email });
+      startLocalSession({ id: account.id, name: account.name, email: account.email });
     },
-    [startSession],
+    [startLocalSession],
   );
 
   const login = useCallback(
@@ -100,23 +109,29 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       if (!account || account.hash !== (await sha256(account.salt + password))) {
         throw new Error("Incorrect email or password.");
       }
-      startSession({ id: account.id, name: account.name, email: account.email });
+      startLocalSession({ id: account.id, name: account.name, email: account.email });
     },
-    [startSession],
+    [startLocalSession],
   );
 
+  const loginWithProvider = useCallback(async (provider: OAuthProvider) => {
+    await signIn(provider, { callbackUrl: "/dashboard" });
+  }, []);
+
   const loginAsGuest = useCallback(() => {
-    startSession({ id: "guest", name: "Guest", email: "", guest: true });
-  }, [startSession]);
+    startLocalSession({ id: "guest", name: "Guest", email: "", guest: true });
+  }, [startLocalSession]);
 
   const logout = useCallback(() => {
     localStorage.removeItem(SESSION_KEY);
-    setUser(null);
-  }, []);
+    setLocal(null);
+    if (oauthUser) void signOut({ callbackUrl: "/" });
+  }, [oauthUser]);
 
   const value = useMemo(
-    () => ({ user, loading, register, login, loginAsGuest, logout }),
-    [user, loading, register, login, loginAsGuest, logout],
+    () => ({ user, loading, register, login, loginWithProvider, loginAsGuest, logout }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [user?.id, loading, register, login, loginWithProvider, loginAsGuest, logout],
   );
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
