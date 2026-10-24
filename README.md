@@ -1,12 +1,58 @@
-# React + Vite
+# AI Career Coach (Next.js + TypeScript)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Rebuilt from the original Vite/React mockup into a working full-stack app. Accent colour everywhere is **Tailwind `indigo-500`**.
 
-Currently, two official plugins are available:
+## What was fixed
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+| Problem in the original | Fix |
+| --- | --- |
+| Resume analysis, roadmaps and chat were hardcoded `setTimeout` fakes | Real AI via server routes (`app/api/*`) using the Anthropic API, with zod-validated JSON output |
+| `Settings.jsx` imported `framer-motion`, which wasn't in `package.json` (build breaker) | Settings rewritten without it |
+| Login/Register did nothing; social buttons were dead | Working demo auth with per-user workspaces; dead buttons removed |
+| Dashboard/History/Jobs showed static sample data | Everything is generated from your profile + resume and persisted per user |
+| Settings tabs (notifications, 2FA, etc.) did nothing | Replaced with Profile + Privacy & Data (export / delete) |
+| JavaScript, Vite SPA, React Router | Next.js 15 App Router + strict TypeScript |
+| Mixed purples (`#6260ec`, indigo-400/600) and blue avatars | One accent: `indigo-500` |
+| Fixed 256px sidebar broke on mobile, `bg-opacity-*` (Tailwind v3 syntax) | Responsive sidebar/drawer, Tailwind v4 syntax |
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Resume Analyzer** – PDF / DOCX / TXT (≤ 4 MB). PDFs are read natively by Claude (so formatting/ATS issues are visible). Score, ATS %, strengths, gaps, rewrites, extracted skills. Downloadable report.
+- **Roadmap Generator** – any target role, level, weekly hours → phased plan with checkable skills and progress tracking. Export as text.
+- **Career Q&A** – streaming chat that uses your profile as context.
+- **Job Recommendations** – AI role matches with skill-gap chips, filters, saved roles, and links to search live openings. (No live job board is connected, so no fake companies are invented.)
+- **Dashboard** – real stats from your roadmap/resume, AI career recommendations.
+- **History / Settings** – search, filter, export, delete.
+
+## Run it
+
+```bash
+npm install
+cp .env.example .env.local   # then add ANTHROPIC_API_KEY
+npm run dev
+```
+
+Open http://localhost:3000. `npm run typecheck` and `npm run build` should both pass.
+
+### Deploy to Vercel
+Import the repo, set `ANTHROPIC_API_KEY` (and optionally `ANTHROPIC_MODEL`) in Project Settings → Environment Variables. Function bodies are limited to ~4.5 MB on Vercel, which is why uploads are capped at 4 MB.
+
+## Architecture
+
+```
+app/
+  (marketing)/    landing, login, register
+  (app)/          authenticated shell + 7 pages
+  api/            resume | roadmap | careers | jobs | chat (streaming)
+lib/
+  ai.ts           Anthropic client, JSON generation + zod validation + one auto-retry
+  schemas.ts      single source of truth for request/response types
+  auth.tsx        demo auth provider
+  app-data.tsx    per-user persisted store
+```
+
+## Known limitations (be upfront in your demo)
+
+- **Auth is demo-grade**: accounts and data live in browser `localStorage`; it is not secure and doesn't sync across devices. Swap `lib/auth.tsx` + `lib/app-data.tsx` for Auth.js/Clerk/Firebase + a database for production. Nothing else depends on the storage layer.
+- The API routes are unauthenticated (rate-limited per IP in memory). Add session checks and a shared limiter (e.g. Upstash) before public launch.
+- Salary/demand figures are model estimates, not market data.
